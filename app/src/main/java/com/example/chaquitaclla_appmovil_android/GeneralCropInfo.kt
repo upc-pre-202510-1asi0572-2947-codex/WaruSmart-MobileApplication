@@ -103,23 +103,9 @@ class GeneralCropInfo : BaseActivity() {
                     when (position) {
                         0 -> startActivity(Intent(this@GeneralCropInfo, GeneralCropInfo::class.java).apply {
                             putExtra("SOWING_ID", sowingId)
-                            putExtra("CROP_ID", cropId)
                         })
-                        1 -> startActivity(Intent(this@GeneralCropInfo, CropCareActivity::class.java).apply {
+                        1 -> startActivity(Intent(this@GeneralCropInfo, ProductsActivity::class.java).apply {
                             putExtra("SOWING_ID", sowingId)
-                            putExtra("CROP_ID", cropId)
-                        })
-                        2 -> startActivity(Intent(this@GeneralCropInfo, ControlsActivity::class.java).apply {
-                            putExtra("SOWING_ID", sowingId)
-                            putExtra("CROP_ID", cropId)
-                        })
-                        3 -> startActivity(Intent(this@GeneralCropInfo, DiseasesActivity::class.java).apply {
-                            putExtra("SOWING_ID", sowingId)
-                            putExtra("CROP_ID", cropId)
-                        })
-                        4 -> startActivity(Intent(this@GeneralCropInfo, ProductsActivity::class.java).apply {
-                            putExtra("SOWING_ID", sowingId)
-                            putExtra("CROP_ID", cropId)
                         })
                     }
                 }
