@@ -2,10 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="green">#006D18</color>
-    <color name="basic">#005F40</color>
-    <color name="regular">#9D7C58</color>
-    <color name="premium">#9A5D4E</color>
+    <color name="green">#3E7C59</color>
+    <color name="brown">#8E6E53</color>
+    <color name="basic">#F3F1E7</color>
+    <color name="regular">#A9B8B3</color>
+    <color name="premium">#C9A66B</color>
     <color name="defaultColor">#CCCCCC</color>
 
     <color name="allow">#00FF00</color>
