@@ -34,6 +34,15 @@
             android:textSize="25dp" />
 
         <EditText
+            android:id="@+id/edtId"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/login_edit_text_background"
+            android:hint="User id"/>
+
+        <EditText
             android:id="@+id/edtName"
             android:layout_width="260dp"
             android:layout_height="wrap_content"

@@ -3,6 +3,7 @@ package com.example.chaquitaclla_appmovil_android.iam.activitys
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -57,6 +58,9 @@ class CreateProfileActivity : AppCompatActivity() {
             val countryId = CountryCityData.countries[selectedCountry]
             val cityId = CountryCityData.cities[countryId]?.indexOf(selectedCity)?.plus(1) // Asumiendo que las ciudades están indexadas desde 1
 
+            val StrUserId = findViewById<EditText>(R.id.edtId).text.toString(); //TODO Porque hay un user id aparte del id normal ?????????????????????????
+            val userId = StrUserId.toInt()
+
             if (countryId != null && cityId != null) {
 
                 val email = SessionManager.username
@@ -78,7 +82,7 @@ class CreateProfileActivity : AppCompatActivity() {
                 }
 
                 if (token != null) {
-                    val profileRequest = ProfileRequest(firtName, lastName, email.toString(), subscriptionId, countryId, cityId)
+                    val profileRequest = ProfileRequest(firtName, lastName, email.toString(), subscriptionId, countryId, cityId, userId)
                     profileServiceImpl.saveProfile(token, profileRequest) { profileResponse ->
                         if (profileResponse != null) {
                             Toast.makeText(this, "Profile saved successfully", Toast.LENGTH_LONG).show()

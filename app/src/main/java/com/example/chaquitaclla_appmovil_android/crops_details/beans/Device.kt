@@ -1,6 +1,6 @@
 package com.example.chaquitaclla_appmovil_android.crops_details.beans
 
-data class Device(
+class Device(
     val type: String,
     val title: String,
     val status: Int,
@@ -9,4 +9,6 @@ data class Device(
     val additionalProp1: String,
     val additionalProp2: String,
     val additionalProp3: String
-)
+){
+
+}
