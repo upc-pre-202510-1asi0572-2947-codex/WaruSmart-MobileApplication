@@ -1,0 +1,112 @@
+package com.example.chaquitaclla_appmovil_android.ui.theme
+
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.chaquitaclla_appmovil_android.BaseActivity
+import com.example.chaquitaclla_appmovil_android.GeneralCropInfo
+import com.example.chaquitaclla_appmovil_android.ProductsActivity
+import com.example.chaquitaclla_appmovil_android.R
+import com.example.chaquitaclla_appmovil_android.crops_details.DeviceService
+import com.example.chaquitaclla_appmovil_android.crops_details.adapters.DeviceAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
+class DeviceaActivity : BaseActivity() {
+    private lateinit var deviceRecyclerView: RecyclerView
+    private val deviceService = DeviceService(this)
+    private lateinit var deviceAdapter: DeviceAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+        layoutInflater.inflate(R.layout.activity_device, findViewById(R.id.container))
+        enableEdgeToEdge()
+
+        // Configurar el BottomNavigationView
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.navigation_home
+
+        deviceRecyclerView = findViewById(R.id.deviceRecyclerView)
+        deviceRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        val sowingId = intent.getIntExtra("SOWING_ID", 1)
+        Log.d("DevicesActivity", "Received sowingId: $sowingId")
+        if (sowingId != -1) {
+            fetchDevicesBySowingId(sowingId)
+        } else {
+            Log.e("DevicesActivity", "Invalid sowing ID")
+            Toast.makeText(this, "Invalid sowing ID", Toast.LENGTH_SHORT).show()
+            finish()
+        }
+
+        setupSpinner()
+    }
+
+    private fun fetchDevicesBySowingId(sowingId: Int){
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val devices = deviceService.getDevicesBySowingId(sowingId)
+                withContext(Dispatchers.Main){
+                    deviceAdapter = DeviceAdapter(devices)
+                    deviceRecyclerView.adapter = deviceAdapter
+                }
+            } catch (e: Exception){
+                Log.e("DeviceAcivity", "Error fetching devices: ${e.message}")
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@DeviceaActivity, "Error fetching devices: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun setupSpinner() {
+        val spinner: Spinner = findViewById(R.id.dropdown_menu)
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.crop_info_options,
+            R.layout.spinner_item_white_text
+        ).also { adapter ->
+            adapter.setDropDownViewResource(R.layout.spinner_item_white_text)
+            spinner.adapter = adapter
+        }
+
+        var isFirstSelection = true
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: android.view.View?, position: Int, id: Long) {
+                if (isFirstSelection) {
+                    isFirstSelection = false
+                    return
+                }
+                view?.let {
+                    val cropId = intent.getIntExtra("CROP_ID", -1)
+                    val sowingId = intent.getIntExtra("SOWING_ID", -1)
+                    when (position) {
+                        0 -> startActivity(Intent(this@DeviceaActivity, GeneralCropInfo::class.java).apply {
+                            putExtra("SOWING_ID", sowingId)
+                        })
+                        1 -> startActivity(Intent(this@DeviceaActivity, DeviceaActivity::class.java).apply {
+                            putExtra("SOWING_ID", sowingId)
+                        })
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // No action needed
+            }
+        }
+        val productPosition = resources.getStringArray(R.array.crop_info_options).indexOf("Products Used")
+        spinner.setSelection(productPosition)
+    }
+}
