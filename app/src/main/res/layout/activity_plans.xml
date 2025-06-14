@@ -38,7 +38,7 @@
             android:layout_height="140dp"
             android:layout_margin="15dp"
             app:cardCornerRadius="10dp"
-            android:backgroundTint="#005F40"
+            android:backgroundTint="@color/basic"
             app:cardElevation="4dp"
             android:layout_gravity="center">
 
@@ -56,7 +56,7 @@
                     android:fontFamily="@font/poppins"
                     android:text="Basic"
                     android:textStyle="bold"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/green"
                     android:textSize="17dp" />
 
                 <LinearLayout
@@ -72,7 +72,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/poppins"
                         android:text="$2.99"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/green"
                         android:textSize="20dp" />
 
                     <TextView
@@ -82,7 +82,7 @@
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins"
                         android:text="/month"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/green"
                         android:textSize="10dp" />
 
                 </LinearLayout>
@@ -106,7 +106,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/poppins"
                         android:text=" Registration of 5 crops"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/green"
                         android:textSize="13dp" />
 
                 </LinearLayout>
@@ -130,7 +130,7 @@
                         android:layout_gravity="center"
                         android:fontFamily="@font/poppins"
                         android:text="Process monitoring"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/green"
                         android:textSize="13dp" />
 
                 </LinearLayout>
@@ -145,7 +145,7 @@
             android:layout_height="140dp"
             android:layout_margin="15dp"
             app:cardCornerRadius="10dp"
-            android:backgroundTint="#9D7C58"
+            android:backgroundTint="#A9B8B3"
             app:cardElevation="4dp"
             android:layout_gravity="center">
 
@@ -252,7 +252,7 @@
             android:layout_height="140dp"
             android:layout_margin="15dp"
             app:cardCornerRadius="10dp"
-            android:backgroundTint="#9A5D4E"
+            android:backgroundTint="@color/premium"
             app:cardElevation="4dp"
             android:layout_gravity="center">
 

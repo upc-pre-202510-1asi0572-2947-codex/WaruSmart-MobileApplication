@@ -244,7 +244,7 @@
             android:fontFamily="@font/poppins"
             android:text="Pay"
             android:textSize="18dp"
-            android:backgroundTint="#005F40"
+            android:backgroundTint="@color/green"
             app:cornerRadius="10dp"/>
 
     </LinearLayout>

@@ -76,7 +76,7 @@
             android:fontFamily="@font/poppins"
             android:text="SignUp"
             android:textSize="18dp"
-            android:backgroundTint="#005F40"
+            android:backgroundTint="#3E7C59"
             app:cornerRadius="10dp"/>
     </LinearLayout>
 
