@@ -1,4 +1,4 @@
-package com.example.chaquitaclla_appmovil_android.ui.theme
+package com.example.chaquitaclla_appmovil_android
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,10 +10,6 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chaquitaclla_appmovil_android.BaseActivity
-import com.example.chaquitaclla_appmovil_android.GeneralCropInfo
-import com.example.chaquitaclla_appmovil_android.ProductsActivity
-import com.example.chaquitaclla_appmovil_android.R
 import com.example.chaquitaclla_appmovil_android.crops_details.DeviceService
 import com.example.chaquitaclla_appmovil_android.crops_details.adapters.DeviceAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -22,7 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DeviceaActivity : BaseActivity() {
+class DeviceActivity : BaseActivity() {
     private lateinit var deviceRecyclerView: RecyclerView
     private val deviceService = DeviceService(this)
     private lateinit var deviceAdapter: DeviceAdapter
@@ -63,7 +59,7 @@ class DeviceaActivity : BaseActivity() {
             } catch (e: Exception){
                 Log.e("DeviceAcivity", "Error fetching devices: ${e.message}")
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(this@DeviceaActivity, "Error fetching devices: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@DeviceActivity, "Error fetching devices: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -92,10 +88,10 @@ class DeviceaActivity : BaseActivity() {
                     val cropId = intent.getIntExtra("CROP_ID", -1)
                     val sowingId = intent.getIntExtra("SOWING_ID", -1)
                     when (position) {
-                        0 -> startActivity(Intent(this@DeviceaActivity, GeneralCropInfo::class.java).apply {
+                        0 -> startActivity(Intent(this@DeviceActivity, GeneralCropInfo::class.java).apply {
                             putExtra("SOWING_ID", sowingId)
                         })
-                        1 -> startActivity(Intent(this@DeviceaActivity, DeviceaActivity::class.java).apply {
+                        1 -> startActivity(Intent(this@DeviceActivity, DeviceActivity::class.java).apply {
                             putExtra("SOWING_ID", sowingId)
                         })
                     }
