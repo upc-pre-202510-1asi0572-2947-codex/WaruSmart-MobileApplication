@@ -47,7 +47,16 @@
             android:name=".iam.activitys.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".StatisticsActivity"
+            android:name=".WaterStatisticsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EnviormentStadisticsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductivityStadisticsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DeviceActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

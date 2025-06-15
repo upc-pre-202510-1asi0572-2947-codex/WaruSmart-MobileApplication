@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Chaquitaclla</string>
-    <string name="title_statical_reports">Statical Reports</string>
+    <string name="app_name">Waru Smart</string>
+    <string name="title_statical_reports">Stadistics Reports</string>
     <string name="title_list_of_crops_in_progress">List of Crops in Progress</string>
     <string name="title_crop_information">Crop Information</string>
     <string-array name="crop_info_options">
@@ -9,6 +9,11 @@
         <item>Controls</item>
         <item>Diseases or Pest</item>
         <item>Products Used</item>
+    </string-array>
+    <string-array name="stadistics_options">
+        <item>Water consumption</item>
+        <item>Environment report</item>
+        <item>Crop productivity</item>
     </string-array>
     <string name="select_crop">Select Crop</string>
     <string name="description_add_sowing">Enter the name and cultivated area. The start date will be recorded as the current date</string>

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chaquitaclla_appmovil_android.crops_details.adapters.ProductAdapter
@@ -226,19 +225,9 @@ class ProductsActivity : BaseActivity() {
                         0 -> startActivity(Intent(this@ProductsActivity, GeneralCropInfo::class.java).apply {
                             putExtra("SOWING_ID", sowingId)
                         })
-                        1 -> startActivity(Intent(this@ProductsActivity, CropCareActivity::class.java).apply {
+                        1 -> startActivity(Intent(this@ProductsActivity, DeviceActivity::class.java).apply {
                             putExtra("SOWING_ID", sowingId)
                             putExtra("CROP_ID", cropId)
-                        })
-                        2 -> startActivity(Intent(this@ProductsActivity, ControlsActivity::class.java).apply {
-                            putExtra("SOWING_ID", sowingId)
-                        })
-                        3 -> startActivity(Intent(this@ProductsActivity, DiseasesActivity::class.java).apply {
-                            putExtra("SOWING_ID", sowingId)
-                            putExtra("CROP_ID", cropId)
-                        })
-                        4 -> startActivity(Intent(this@ProductsActivity, ProductsActivity::class.java).apply {
-                            putExtra("SOWING_ID", sowingId)
                         })
                     }
                 }
