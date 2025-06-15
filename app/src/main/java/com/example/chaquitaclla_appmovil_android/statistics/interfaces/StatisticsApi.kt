@@ -2,6 +2,7 @@ package com.example.chaquitaclla_appmovil_android.statistics.interfaces;
 
 import com.example.chaquitaclla_appmovil_android.statistics.beans.Control
 import com.example.chaquitaclla_appmovil_android.statistics.beans.Crop;
+import com.example.chaquitaclla_appmovil_android.statistics.beans.ProductivityReport
 import com.example.chaquitaclla_appmovil_android.statistics.beans.Sowing
 
 import retrofit2.http.GET;
@@ -19,4 +20,8 @@ public interface StatisticsApi {
     //Function used to get all sowings
     @GET("crops-management/sowings")
     suspend fun getSowings(): List<Sowing>
+
+    //Function to get productivity report
+    @GET("reports/productivity")
+    suspend fun getProductivityReports() : List<ProductivityReport>
 }

@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.Log
 import androidx.room.Room
 import com.example.chaquitaclla_appmovil_android.SessionManager
+import com.example.chaquitaclla_appmovil_android.statistics.beans.ProductivityReport
 import com.example.chaquitaclla_appmovil_android.statistics.beans.StatisticBar
 import com.example.chaquitaclla_appmovil_android.statistics.interfaces.StatisticsApi
 import okhttp3.OkHttpClient
@@ -155,6 +156,20 @@ class StatisticsService(context:Context) {
             }
 
             statisticBars
+        }
+    }
+
+
+    /**
+     * This method call at the reports api, in order to obtain reports
+     * for the productivity
+     */
+    suspend fun getProductivityReports(): List<ProductivityReport>{
+        return try{
+            api.getProductivityReports()
+        } catch (e: SocketException) {
+            Log.e("Stadistics service", "SocketException: ${e.message}")
+            emptyList()
         }
     }
 
