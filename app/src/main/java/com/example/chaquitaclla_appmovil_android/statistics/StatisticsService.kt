@@ -164,14 +164,13 @@ class StatisticsService(context:Context) {
      * This method call at the reports api, in order to obtain reports
      * for the productivity
      */
-    suspend fun getProductivityReports(): List<ProductivityReport>{
+    suspend fun getProductivityReportsById(userId: Int): List<ProductivityReport>{
         return try{
-            api.getProductivityReports()
-        } catch (e: SocketException) {
-            Log.e("Stadistics service", "SocketException: ${e.message}")
+            api.getProductivityReports(userId);
+        } catch (e: Exception) {
+            Log.e("Stadistics Service", "Socking productivity reports: ${e.message}")
             emptyList()
         }
     }
-
 
 }

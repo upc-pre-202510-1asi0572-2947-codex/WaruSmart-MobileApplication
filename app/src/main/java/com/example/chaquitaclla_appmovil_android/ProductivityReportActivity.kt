@@ -7,22 +7,60 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ProgressBar
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.chaquitaclla_appmovil_android.crops_details.adapters.DeviceAdapter
 import com.example.chaquitaclla_appmovil_android.statistics.StatisticsService
+import com.example.chaquitaclla_appmovil_android.statistics.adapters.ProductivityReportAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ProductivityReportActivity : BaseActivity() {
 
-    private lateinit var statisticsService: StatisticsService
+    private lateinit var reportRecyclerView: RecyclerView
+    private val statisticsService = StatisticsService(this)
     private lateinit var progressBar: ProgressBar
+    private lateinit var reportAdapter: ProductivityReportAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        layoutInflater.inflate(R.layout.activity_water_statistics, findViewById(R.id.container))
+        layoutInflater.inflate(R.layout.activity_productivity_report, findViewById(R.id.container))
+
+        // Configurar el BottomNavigationView
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.navigation_statistics
+
+        reportRecyclerView = findViewById(R.id.productivityReportRecyclerView)
+        reportRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        //TODO Pass id for fetch reports
 
         setupSpinner()
+    }
+
+    private fun fetchProductivityReportsByUserId(userId: Int){
+        CoroutineScope(Dispatchers.IO).launch{
+            try {
+                val reports = statisticsService.getProductivityReportsById(userId)
+                withContext(Dispatchers.Main){
+                    reportAdapter = ProductivityReportAdapter(reports)
+                    reportRecyclerView.adapter = reportAdapter
+                }
+            } catch (e: Exception){
+                Log.e("DeviceAcivity", "Error fetching devices: ${e.message}")
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@ProductivityReportActivity, "Error fetching reports: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun setupSpinner() {
