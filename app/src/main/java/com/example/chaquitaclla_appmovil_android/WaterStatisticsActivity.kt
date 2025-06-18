@@ -80,11 +80,11 @@ class WaterStatisticsActivity : BaseActivity() {
                     return
                 }
                 view?.let {
-                    Log.d("WaterStadisticsActivity", "Spinner item selected")
+                    Log.d("WaterReportActivity", "Spinner item selected")
                     when (position) {
                         0 -> startActivity(Intent(this@WaterStatisticsActivity, WaterStatisticsActivity::class.java))
-                        1 -> startActivity(Intent(this@WaterStatisticsActivity, EnviormentStadisticsActivity::class.java))
-                        2 -> startActivity(Intent(this@WaterStatisticsActivity, ProductivityStadisticsActivity::class.java))
+                        1 -> startActivity(Intent(this@WaterStatisticsActivity, EnviromentReportActivity::class.java))
+                        2 -> startActivity(Intent(this@WaterStatisticsActivity, ProductivityReportActivity::class.java))
                     }
                 }
             }

@@ -7,22 +7,25 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ProgressBar
 import android.widget.Spinner
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.chaquitaclla_appmovil_android.statistics.StatisticsService
-import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.charts.PieChart
 
-class ProductivityStadisticsActivity : BaseActivity() {
+class EnviromentReportActivity : BaseActivity() {
 
     private lateinit var statisticsService: StatisticsService
     private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        layoutInflater.inflate(R.layout.activity_water_statistics, findViewById(R.id.container))
 
         setupSpinner()
     }
 
-    private fun setupSpinner() {
+    private fun setupSpinner(){
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(
             this,
@@ -43,11 +46,11 @@ class ProductivityStadisticsActivity : BaseActivity() {
                     return
                 }
                 view?.let {
-                    Log.d("ProductivityStadisticsActivity", "Spinner item selected")
+                    Log.d("EnviromentReportActivity", "Spinner item selected")
                     when (position) {
-                        0 -> startActivity(Intent(this@ProductivityStadisticsActivity, WaterStatisticsActivity::class.java))
-                        1 -> startActivity(Intent(this@ProductivityStadisticsActivity, EnviormentStadisticsActivity::class.java))
-                        2 -> startActivity(Intent(this@ProductivityStadisticsActivity, ProductivityStadisticsActivity::class.java))
+                        0 -> startActivity(Intent(this@EnviromentReportActivity, WaterStatisticsActivity::class.java))
+                        1 -> startActivity(Intent(this@EnviromentReportActivity, EnviromentReportActivity::class.java))
+                        2 -> startActivity(Intent(this@EnviromentReportActivity, ProductivityReportActivity::class.java))
                     }
                 }
             }
@@ -57,7 +60,7 @@ class ProductivityStadisticsActivity : BaseActivity() {
             }
         }
 
-        val spinnerPosition = resources.getStringArray(R.array.stadistics_options).indexOf("Crop productivity")
+        val spinnerPosition = resources.getStringArray(R.array.stadistics_options).indexOf("Environment report")
         spinner.setSelection(spinnerPosition)
     }
 }
