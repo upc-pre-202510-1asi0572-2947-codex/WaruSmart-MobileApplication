@@ -22,6 +22,6 @@ public interface StatisticsApi {
     suspend fun getSowings(): List<Sowing>
 
     //Function to get productivity report
-    @GET("reports/productivity")
-    suspend fun getProductivityReports() : List<ProductivityReport>
+    @GET("reports/productivity/{userId}")
+    suspend fun getProductivityReports(@Path("userId") userId: Int) : List<ProductivityReport>
 }
