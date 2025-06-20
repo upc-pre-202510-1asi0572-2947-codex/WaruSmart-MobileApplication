@@ -103,7 +103,6 @@ class GeneralCropInfo : BaseActivity() {
                     when (position) {
                         0 -> startActivity(Intent(this@GeneralCropInfo, GeneralCropInfo::class.java).apply {
                             putExtra("SOWING_ID", sowingId)
-                            putExtra("CROP_ID", cropId)
                         })
                         1 -> startActivity(Intent(this@GeneralCropInfo, DeviceActivity::class.java).apply {
                             putExtra("SOWING_ID", sowingId)

@@ -5,10 +5,7 @@
     <string name="title_crop_information">Crop Information</string>
     <string-array name="crop_info_options">
         <item>General Information</item>
-        <item>Crop Care</item>
-        <item>Controls</item>
-        <item>Diseases or Pest</item>
-        <item>Products Used</item>
+        <item>IOT devices</item>
     </string-array>
     <string-array name="stadistics_options">
         <item>Water consumption</item>
