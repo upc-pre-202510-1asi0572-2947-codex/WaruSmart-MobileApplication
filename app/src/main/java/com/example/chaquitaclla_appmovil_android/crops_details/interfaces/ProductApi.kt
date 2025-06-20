@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ProductApi {
-    @GET("/api/v1/crops-management/crops/{cropId}/products")
+    @GET("crops-management/crops/{cropId}/products")
     suspend fun getProductsByCropId(@Path("cropId") cropId: Int): List<Product>
 }

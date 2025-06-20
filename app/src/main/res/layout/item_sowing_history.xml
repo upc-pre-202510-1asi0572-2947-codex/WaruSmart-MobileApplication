@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
-            android:backgroundTint="#006D18"
+            android:backgroundTint="@color/green"
             android:text="See"
             android:textColor="@color/white"
             android:fontFamily="@font/poppins_regular"

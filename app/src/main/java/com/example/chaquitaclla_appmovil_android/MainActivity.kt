@@ -43,8 +43,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        //Funcion para ir a estadisticas
         fun newIntent(context: Context): Intent {
-            return Intent(context, StatisticsActivity::class.java)
+            return Intent(context, WaterStatisticsActivity::class.java)
         }
 
         // Nueva función para ir a SowingsManagementActivity

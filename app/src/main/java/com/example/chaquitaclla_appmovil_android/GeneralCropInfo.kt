@@ -104,8 +104,9 @@ class GeneralCropInfo : BaseActivity() {
                         0 -> startActivity(Intent(this@GeneralCropInfo, GeneralCropInfo::class.java).apply {
                             putExtra("SOWING_ID", sowingId)
                         })
-                        1 -> startActivity(Intent(this@GeneralCropInfo, ProductsActivity::class.java).apply {
+                        1 -> startActivity(Intent(this@GeneralCropInfo, DeviceActivity::class.java).apply {
                             putExtra("SOWING_ID", sowingId)
+                            putExtra("CROP_ID", cropId)
                         })
                     }
                 }

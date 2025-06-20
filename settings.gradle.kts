@@ -20,6 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Chaquitaclla_appmovil_android"
+rootProject.name = "WaruSmart_appmovil_android"
 include(":app")
- 
