@@ -68,8 +68,8 @@ class SignInActivity : AppCompatActivity() {
 
                                 //Section added for DEBUG purposes, remove when profile camn be created
                                 SessionManager.profileId = signInResponse.id
-                                startActivity(GoProfile(this))
-                                //startActivity(GoPlans(this))
+                                //startActivity(GoProfile(this))
+                                startActivity(GoPlans(this))
 
 
 
