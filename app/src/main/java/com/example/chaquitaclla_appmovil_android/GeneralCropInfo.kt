@@ -17,6 +17,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import DB.AppDataBase
+import android.widget.Toast
+import com.example.chaquitaclla_appmovil_android.iam.activitys.SignInActivity
 import com.example.chaquitaclla_appmovil_android.sowingsManagement.SowingsService
 import java.text.SimpleDateFormat
 import java.util.*
@@ -40,7 +42,15 @@ class GeneralCropInfo : BaseActivity() {
         }
 
         appDB = AppDataBase.getDatabase(this)
-        sowingsService = SowingsService()
+        val token = SessionManager.token
+        if (token != null) {
+            sowingsService = SowingsService(this, token)
+        } else {
+            Toast.makeText(this, "Token no encontrado. Inicia sesión nuevamente.", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, SignInActivity::class.java))
+            finish()
+            return
+        }
 
         val sowingId = intent.getIntExtra("SOWING_ID", -1)
         val cropId = intent.getIntExtra("CROP_ID", -1)

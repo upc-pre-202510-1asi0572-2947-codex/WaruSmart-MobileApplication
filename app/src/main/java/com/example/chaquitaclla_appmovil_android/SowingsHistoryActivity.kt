@@ -47,7 +47,8 @@ class SowingsHistoryActivity : BaseActivity() {
         }
 
         database = AppDataBase.getDatabase(this)
-        sowingsService = SowingsService()
+        val token = SessionManager.token ?: ""
+        sowingsService = SowingsService(this, token)
         recyclerView = findViewById(R.id.recycler_view)
         recyclerView.layoutManager = GridLayoutManager(this, 2)
 

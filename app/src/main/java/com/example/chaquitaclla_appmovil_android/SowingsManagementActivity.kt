@@ -15,7 +15,10 @@ import com.example.chaquitaclla_appmovil_android.BaseActivity
 import com.example.chaquitaclla_appmovil_android.CropCareActivity
 import com.example.chaquitaclla_appmovil_android.GeneralCropInfo
 import com.example.chaquitaclla_appmovil_android.R
+import com.example.chaquitaclla_appmovil_android.SessionManager
+import com.example.chaquitaclla_appmovil_android.iam.activitys.SignInActivity
 import com.example.chaquitaclla_appmovil_android.sowingsManagement.beans.Crop
+import com.example.chaquitaclla_appmovil_android.sowingsManagement.beans.SowingDos
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -39,7 +42,15 @@ class SowingsManagementActivity : BaseActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_home
 
-        sowingsService = SowingsService()
+        val token = SessionManager.token
+        if (token != null) {
+            sowingsService = SowingsService(this, token)
+        } else {
+            Toast.makeText(this, "Token not found. Please log in again.", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, SignInActivity::class.java))
+            finish()
+            return
+        }
         sowingsContainer = findViewById(R.id.sowings_container)
         addCropButton = findViewById(R.id.button_add_crop)
 
@@ -59,17 +70,58 @@ class SowingsManagementActivity : BaseActivity() {
     private fun fetchAndDisplaySowings() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val sowings = appDB.sowingDAO().getAllSowings().filter { !it.status }
+                val userId = SessionManager.profileId ?: -1
+                if (userId == -1) {
+                    Log.e("SowingsManagement", "User ID not found")
+                    return@launch
+                }
+
+                val sowings = sowingsService.getSowingsByUserId(userId) // desde backend
+                Log.d("SowingsManagement", "Sowings from backend: ${sowings.joinToString("\n")}")
+
                 crops = sowingsService.getAllCrops()
                 val cropMap = crops.associateBy { it.id }
+
                 withContext(Dispatchers.Main) {
-                    displaySowings(sowings, cropMap)
+                    displaySowingsDos(sowings, cropMap) // nueva función adaptada para SowingDos
                 }
             } catch (e: Exception) {
                 Log.e("SowingsManagement", "Error fetching sowings: ${e.message}")
             }
         }
     }
+
+    private fun displaySowingsDos(sowings: List<SowingDos>, cropMap: Map<Int, Crop>) {
+        sowingsContainer.removeAllViews()
+        sowings.forEach { sowing ->
+            val cardView = LayoutInflater.from(this).inflate(R.layout.item_sowing, sowingsContainer, false)
+
+            val imgCrop = cardView.findViewById<ImageView>(R.id.imgCrop)
+            val txtCropName = cardView.findViewById<TextView>(R.id.txtCropName)
+            val txtPhenologicalPhaseName = cardView.findViewById<TextView>(R.id.txtPhenologicalPhaseName)
+            val txtStartDate = cardView.findViewById<TextView>(R.id.txtStartDate)
+            val txtEndDate = cardView.findViewById<TextView>(R.id.txtEndDate)
+            val txtArea = cardView.findViewById<TextView>(R.id.txtArea)
+
+            val crop = cropMap[sowing.cropId]
+            if (crop != null) {
+                Glide.with(this).load(crop.imageUrl).into(imgCrop)
+                txtCropName.text = crop.name
+            } else {
+                imgCrop.setImageResource(R.drawable.ic_launcher_background)
+                txtCropName.text = "Unknown"
+            }
+
+            txtPhenologicalPhaseName.text = sowing.phenologicalPhaseName ?: "Sincronizado"
+            txtStartDate.text = sowing.startDate?.substring(0, 10) ?: "-"
+            txtEndDate.text = sowing.endDate?.substring(0, 10) ?: "-"
+            txtArea.text = "${sowing.areaLand} m²"
+
+            sowingsContainer.addView(cardView)
+        }
+    }
+
+
 
     private fun displaySowings(sowings: List<Sowing>, cropMap: Map<Int, Crop>) {
         sowingsContainer.removeAllViews()
@@ -331,29 +383,23 @@ class SowingsManagementActivity : BaseActivity() {
     private fun addSowing(cropId: Int, area: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val startDate = Date()
-                val calendar = Calendar.getInstance().apply {
-                    time = startDate
-                    add(Calendar.MONTH, 6)
+                val userId = SessionManager.profileId ?: -1
+                if (userId == -1) {
+                    Log.e("SowingsManagement", "User ID not found")
+                    return@launch
                 }
-                val endDate = calendar.time
 
-                val newSowing = Sowing(
-                    id = 0,
-                    startDate = startDate,
-                    endDate = endDate,
+                val sowingDto = SowingDos(
                     areaLand = area,
-                    status = false,
-                    phenologicalPhase = 0,
                     cropId = cropId,
-                    phenologicalPhaseName = "Germination",
-                    favourite = false
+                    userId = userId
                 )
-                appDB.sowingDAO().insertSowing(newSowing)
+                sowingsService.addSowingRemote(sowingDto)
                 fetchAndDisplaySowings()
             } catch (e: Exception) {
                 Log.e("SowingsManagement", "Error adding sowing: ${e.message}")
             }
         }
     }
+
 }

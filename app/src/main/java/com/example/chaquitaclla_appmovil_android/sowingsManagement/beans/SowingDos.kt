@@ -1,11 +1,14 @@
 // SowingDos.kt
 package com.example.chaquitaclla_appmovil_android.sowingsManagement.beans
 
-class SowingDos(
-    var areaLand: Int,
-    var cropId: Int
-) {
-    override fun toString(): String {
-        return "SowingDos(areaLand=$areaLand, cropId=$cropId)"
-    }
-}
+data class SowingDos(
+    val id: Int? = null,
+    val startDate: String? = null,
+    val endDate: String? = null,
+    val areaLand: Int,
+    val status: Boolean? = null,
+    val phenologicalPhase: Int? = null,
+    val cropId: Int,
+    val phenologicalPhaseName: String? = null,
+    val userId: Int
+)
