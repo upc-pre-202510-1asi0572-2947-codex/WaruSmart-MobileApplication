@@ -4,7 +4,7 @@ package Entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.chaquitaclla_appmovil_android.sowingsManagement.beans.DateDeserializer
+import com.example.waruSmart_appmovil_android.sowingsManagement.beans.DateDeserializer
 import com.google.gson.annotations.JsonAdapter
 import java.util.Date
 
