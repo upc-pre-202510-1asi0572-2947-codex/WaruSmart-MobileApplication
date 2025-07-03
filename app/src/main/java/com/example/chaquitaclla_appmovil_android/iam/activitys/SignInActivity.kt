@@ -56,7 +56,7 @@ class SignInActivity : AppCompatActivity() {
                             val profile = profiles?.find { it.email == username }
                             if (profile != null) {
                                 Log.d("SignInActivity", "Profile found: $profile")
-                                SessionManager.profileId = profile.id
+                                SessionManager.profileId = profile.userId
                                 startActivity(GoProfile(this))
                             } else {
                                 Log.d("SignInActivity", "Profile not found, going to plans")

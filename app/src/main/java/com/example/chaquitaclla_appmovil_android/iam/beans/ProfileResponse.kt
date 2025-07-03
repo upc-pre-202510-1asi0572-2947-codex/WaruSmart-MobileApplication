@@ -6,5 +6,6 @@ data class ProfileResponse(
     val email: String,
     val countryId: Int,
     val cityId: Int,
-    val subscriptionId: Int
+    val subscriptionId: Int,
+    val userId: Int
 )

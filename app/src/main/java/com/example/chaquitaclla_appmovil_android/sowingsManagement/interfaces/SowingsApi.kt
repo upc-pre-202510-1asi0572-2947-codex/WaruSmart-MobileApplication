@@ -17,4 +17,8 @@ interface SowingsApi {
 
     @POST("crops-management/sowings")
     suspend fun addSowing(@Body sowing: SowingDos)
+
+    @GET("crops-management/sowings/{userId}/user")
+    suspend fun getSowingsByUserId(@Path("userId") userId: Int): List<SowingDos>
+
 }

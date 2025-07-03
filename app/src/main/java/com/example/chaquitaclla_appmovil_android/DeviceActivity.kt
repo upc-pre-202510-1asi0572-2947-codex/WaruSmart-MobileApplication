@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chaquitaclla_appmovil_android.crops_details.DeviceService
 import com.example.chaquitaclla_appmovil_android.crops_details.adapters.DeviceAdapter
+import com.example.chaquitaclla_appmovil_android.iam.activitys.SignInActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,13 +21,23 @@ import kotlinx.coroutines.withContext
 
 class DeviceActivity : BaseActivity() {
     private lateinit var deviceRecyclerView: RecyclerView
-    private val deviceService = DeviceService(this)
+    private lateinit var deviceService: DeviceService
     private lateinit var deviceAdapter: DeviceAdapter
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_device, findViewById(R.id.container))
         enableEdgeToEdge()
+
+        val token = SessionManager.token
+        if (token != null) {
+            deviceService = DeviceService(this, token)
+        } else {
+            Toast.makeText(this, "Token not found. Please log in again.", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this, SignInActivity::class.java))
+            finish()
+            return
+        }
 
         // Configurar el BottomNavigationView
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)

@@ -1,42 +1,36 @@
-// SowingsService.kt
 package com.example.chaquitaclla_appmovil_android.sowingsManagement
 
+import android.content.Context
 import android.util.Log
-import com.example.chaquitaclla_appmovil_android.SessionManager
-import com.example.chaquitaclla_appmovil_android.sowingsManagement.beans.SowingDos
 import com.example.chaquitaclla_appmovil_android.sowingsManagement.beans.Crop
+import com.example.chaquitaclla_appmovil_android.sowingsManagement.beans.SowingDos
 import com.example.chaquitaclla_appmovil_android.sowingsManagement.interfaces.SowingsApi
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.SocketException
-import io.github.cdimascio.dotenv.dotenv
 
-class SowingsService {
-    private val dotenv = dotenv {
-        directory = "/assets"
-        filename = "env"
-    }
+class SowingsService(context: Context, private val bearerToken: String) {
+
     private val api: SowingsApi
-    private val token: String? = SessionManager.token
 
     init {
         Log.d("SowingsService", "Initializing SowingsService")
-        if (token.isNullOrEmpty()) {
+        if (bearerToken.isEmpty()) {
             throw IllegalArgumentException("Bearer token is missing or empty")
         }
 
         val client = OkHttpClient.Builder().addInterceptor { chain ->
             val original = chain.request()
             val requestBuilder: Request.Builder = original.newBuilder()
-                .header("Authorization", "Bearer $token")
+                .header("Authorization", "Bearer $bearerToken")
             val request: Request = requestBuilder.build()
             chain.proceed(request)
         }.build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(dotenv["API_URL"])
+            .baseUrl("https://waru-smart-fzg6c7htcadxb9g5.canadacentral-01.azurewebsites.net/api/v1/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -68,4 +62,25 @@ class SowingsService {
             emptyList()
         }
     }
+
+    suspend fun getSowingsByUserId(userId: Int): List<SowingDos> {
+        Log.d("SowingsService", "Fetching sowings for user ID: $userId")
+        return try {
+            val sowings = api.getSowingsByUserId(userId)
+            Log.d("SowingsService", "Sowings obtained: $sowings")
+            sowings
+        } catch (e: SocketException) {
+            Log.e("SowingsService", "SocketException: ${e.message}")
+            emptyList()
+        } catch (e: Exception) {
+            Log.e("SowingsService", "Error fetching sowings: ${e.message}")
+            emptyList()
+        }
+    }
+
+    suspend fun addSowingRemote(sowing: SowingDos) {
+        api.addSowing(sowing)
+    }
+
+
 }
