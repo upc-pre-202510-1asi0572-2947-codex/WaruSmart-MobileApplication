@@ -55,19 +55,19 @@
             android:name=".stadistics.interfaces.WaterStatisticsActivity"
             android:exported="false" />
         <activity
-            android:name=".crops_details.interfaces.DeviceActivity"
+            android:name=".crops.interfaces.DeviceActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-        <activity android:name=".crops_details.interfaces.CropCareActivity" />
-        <activity android:name=".crops_details.interfaces.ControlsActivity" />
-        <activity android:name=".crops_details.interfaces.DiseasesActivity" />
-        <activity android:name=".crops_details.interfaces.ProductsActivity" />
-        <activity android:name=".sowingsManagement.interfaces.GeneralCropInfo" />
-        <activity android:name=".sowingsManagement.interfaces.SowingsHistoryActivity" />
+        <activity android:name=".crops.interfaces.CropCareActivity" />
+        <activity android:name=".crops.interfaces.ControlsActivity" />
+        <activity android:name=".crops.interfaces.DiseasesActivity" />
+        <activity android:name=".crops.interfaces.ProductsActivity" />
+        <activity android:name=".sowings.interfaces.GeneralCropInfo" />
+        <activity android:name=".sowings.interfaces.SowingsHistoryActivity" />
         <activity
-            android:name=".sowingsManagement.interfaces.SowingsManagementActivity"
+            android:name=".sowings.interfaces.SowingsManagementActivity"
             android:exported="true" />
     </application>
 

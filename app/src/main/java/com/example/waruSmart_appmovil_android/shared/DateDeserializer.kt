@@ -1,4 +1,4 @@
-package com.example.waruSmart_appmovil_android.sowingsManagement.beans
+package com.example.waruSmart_appmovil_android.sowings.beans
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer

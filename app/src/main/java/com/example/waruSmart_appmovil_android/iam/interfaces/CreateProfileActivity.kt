@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.waruSmart_appmovil_android.iam.domain.model.CountryCityData
 import com.example.waruSmart_appmovil_android.R
 import com.example.waruSmart_appmovil_android.iam.domain.model.SessionManager
-import com.example.waruSmart_appmovil_android.iam.RetrofitClient
+import com.example.waruSmart_appmovil_android.iam.infrastructure.DB.RetrofitClient
 import com.example.waruSmart_appmovil_android.iam.domain.model.ProfileRequest
 import com.example.waruSmart_appmovil_android.iam.application.services.ProfileServiceImpl
 

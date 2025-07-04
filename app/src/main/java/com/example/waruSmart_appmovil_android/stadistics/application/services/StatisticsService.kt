@@ -1,6 +1,6 @@
 package com.example.waruSmart_appmovil_android.stadistics.application.services
 
-import DB.AppDataBase
+import com.example.waruSmart_appmovil_android.shared.application.DB.AppDataBase
 import android.content.Context
 import android.util.Log
 import com.example.waruSmart_appmovil_android.iam.domain.model.SessionManager

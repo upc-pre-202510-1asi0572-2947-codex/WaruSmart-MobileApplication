@@ -9,8 +9,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.waruSmart_appmovil_android.sowingsManagement.interfaces.SowingsHistoryActivity
-import com.example.waruSmart_appmovil_android.sowingsManagement.interfaces.SowingsManagementActivity
+import com.example.waruSmart_appmovil_android.sowings.interfaces.SowingsHistoryActivity
+import com.example.waruSmart_appmovil_android.sowings.interfaces.SowingsManagementActivity
 import com.example.waruSmart_appmovil_android.stadistics.interfaces.WaterStatisticsActivity
 
 /**

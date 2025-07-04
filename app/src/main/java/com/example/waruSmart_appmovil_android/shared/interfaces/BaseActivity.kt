@@ -3,17 +3,17 @@ package com.example.waruSmart_appmovil_android.shared.interfaces
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.waruSmart_appmovil_android.crops_details.interfaces.ControlsActivity
-import com.example.waruSmart_appmovil_android.crops_details.interfaces.CropCareActivity
-import com.example.waruSmart_appmovil_android.crops_details.interfaces.DiseasesActivity
-import com.example.waruSmart_appmovil_android.sowingsManagement.interfaces.GeneralCropInfo
-import com.example.waruSmart_appmovil_android.crops_details.interfaces.ProductsActivity
+import com.example.waruSmart_appmovil_android.crops.interfaces.ControlsActivity
+import com.example.waruSmart_appmovil_android.crops.interfaces.CropCareActivity
+import com.example.waruSmart_appmovil_android.crops.interfaces.DiseasesActivity
+import com.example.waruSmart_appmovil_android.sowings.interfaces.GeneralCropInfo
+import com.example.waruSmart_appmovil_android.crops.interfaces.ProductsActivity
 import com.example.waruSmart_appmovil_android.R
-import com.example.waruSmart_appmovil_android.sowingsManagement.interfaces.SowingsHistoryActivity
+import com.example.waruSmart_appmovil_android.sowings.interfaces.SowingsHistoryActivity
 import com.example.waruSmart_appmovil_android.forum.interfaces.AnswersActivity
 import com.example.waruSmart_appmovil_android.forum.interfaces.ForumManagementActivity
 import com.example.waruSmart_appmovil_android.iam.interfaces.ProfileActivity
-import com.example.waruSmart_appmovil_android.sowingsManagement.interfaces.SowingsManagementActivity
+import com.example.waruSmart_appmovil_android.sowings.interfaces.SowingsManagementActivity
 import com.example.waruSmart_appmovil_android.stadistics.interfaces.WaterStatisticsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
