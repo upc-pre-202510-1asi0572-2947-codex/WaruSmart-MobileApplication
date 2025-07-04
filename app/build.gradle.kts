@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.chaquitaclla_appmovil_android"
+    namespace = "com.example.waruSmart_appmovil_android"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.chaquitaclla_appmovil_android"
+        applicationId = "com.example.waruSmart_appmovil_android"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
