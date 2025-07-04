@@ -1,7 +1,7 @@
 package com.example.waruSmart_appmovil_android.iam
 
-import com.example.waruSmart_appmovil_android.iam.`interface`.AuthService
-import com.example.waruSmart_appmovil_android.iam.interfaces.ProfileService
+import com.example.waruSmart_appmovil_android.iam.infrastructure.AuthService
+import com.example.waruSmart_appmovil_android.iam.infrastructure.ProfileService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import io.github.cdimascio.dotenv.dotenv

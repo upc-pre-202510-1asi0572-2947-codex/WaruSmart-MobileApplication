@@ -5,7 +5,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.waruSmart_appmovil_android.R
 import com.example.waruSmart_appmovil_android.forum.domain.model.Answer
-import com.example.waruSmart_appmovil_android.iam.beans.ProfileResponse
+import com.example.waruSmart_appmovil_android.iam.domain.model.ProfileResponse
 
 class AnswerViewHolder(view: View, val profileList: List<ProfileResponse>): RecyclerView.ViewHolder(view) {
 

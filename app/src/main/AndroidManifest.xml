@@ -16,10 +16,10 @@
         android:theme="@style/Theme.Warusmart_appmovil_android"
         tools:targetApi="31">
         <activity
-            android:name=".ProductivityReportActivity"
+            android:name=".stadistics.interfaces.ProductivityReportActivity"
             android:exported="false" />
         <activity
-            android:name=".EnviromentReportActivity"
+            android:name=".stadistics.interfaces.EnviromentReportActivity"
             android:exported="false" />
         <activity
             android:name=".forum.interfaces.AnswersActivity"
@@ -28,10 +28,10 @@
             android:name=".forum.interfaces.ForumManagementActivity"
             android:exported="false" />
         <activity
-            android:name=".iam.activitys.CreateProfileActivity"
+            android:name=".iam.interfaces.CreateProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".iam.activitys.SignInActivity"
+            android:name=".iam.interfaces.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,34 +40,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".iam.activitys.SignUpActivity"
+            android:name=".iam.interfaces.SignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".iam.activitys.PlansActivity"
+            android:name=".iam.interfaces.PlansActivity"
             android:exported="true" />
         <activity
-            android:name=".iam.activitys.PayActivity"
+            android:name=".iam.interfaces.PayActivity"
             android:exported="true" />
         <activity
-            android:name=".iam.activitys.ProfileActivity"
+            android:name=".iam.interfaces.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".WaterStatisticsActivity"
+            android:name=".stadistics.interfaces.WaterStatisticsActivity"
             android:exported="false" />
         <activity
-            android:name=".DeviceActivity"
+            android:name=".crops_details.interfaces.DeviceActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-        <activity android:name=".CropCareActivity" />
-        <activity android:name=".ControlsActivity" />
-        <activity android:name=".DiseasesActivity" />
-        <activity android:name=".ProductsActivity" />
-        <activity android:name=".GeneralCropInfo" />
-        <activity android:name=".SowingsHistoryActivity" />
+        <activity android:name=".crops_details.interfaces.CropCareActivity" />
+        <activity android:name=".crops_details.interfaces.ControlsActivity" />
+        <activity android:name=".crops_details.interfaces.DiseasesActivity" />
+        <activity android:name=".crops_details.interfaces.ProductsActivity" />
+        <activity android:name=".sowingsManagement.interfaces.GeneralCropInfo" />
+        <activity android:name=".sowingsManagement.interfaces.SowingsHistoryActivity" />
         <activity
-            android:name=".sowingsManagement.SowingsManagementActivity"
+            android:name=".sowingsManagement.interfaces.SowingsManagementActivity"
             android:exported="true" />
     </application>
 

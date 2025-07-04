@@ -12,7 +12,7 @@ import android.content.Context
 import androidx.room.TypeConverters
 import Entities.Control
 import Entities.Product
-import com.example.waruSmart_appmovil_android.sowingsManagement.beans.DateConverter
+import com.example.waruSmart_appmovil_android.sowingsManagement.domain.model.DateConverter
 
 @Database(entities = [Sowing::class, Control::class, Product::class], version = 5, exportSchema = false)
 @TypeConverters(DateConverter::class)

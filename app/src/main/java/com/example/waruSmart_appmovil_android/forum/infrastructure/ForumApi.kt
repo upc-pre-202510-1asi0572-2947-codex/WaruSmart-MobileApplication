@@ -6,7 +6,7 @@ import com.example.waruSmart_appmovil_android.forum.domain.model.Category
 import com.example.waruSmart_appmovil_android.forum.domain.model.Question
 import com.example.waruSmart_appmovil_android.forum.domain.model.QuestionPost
 import com.example.waruSmart_appmovil_android.forum.domain.model.QuestionPut
-import com.example.waruSmart_appmovil_android.iam.beans.ProfileResponse
+import com.example.waruSmart_appmovil_android.iam.domain.model.ProfileResponse
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.waruSmart_appmovil_android.forum.interfaces.AnswersActivity
 import com.example.waruSmart_appmovil_android.forum.interfaces.ForumManagementActivity
 import com.example.waruSmart_appmovil_android.R
-import com.example.waruSmart_appmovil_android.SessionManager
+import com.example.waruSmart_appmovil_android.iam.domain.model.SessionManager
 import com.example.waruSmart_appmovil_android.forum.domain.model.Category
 import com.example.waruSmart_appmovil_android.forum.domain.model.Question
 
