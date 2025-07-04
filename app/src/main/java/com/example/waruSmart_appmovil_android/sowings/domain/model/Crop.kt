@@ -5,9 +5,9 @@ class Crop(
     var name: String,
     var imageUrl: String,
     var description: String,
-    var diseases: List<Int>,
+/*    var diseases: List<Int>,
     var pests: List<Int>,
-    var cares: List<Int>
+    var cares: List<Int>*/
 ) {
 
 }
