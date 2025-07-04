@@ -15,6 +15,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.net.SocketException
 import java.util.Date
 
+/**
+ * Service for handling crop cares API requests.
+ */
 class CropCaresService {
     val dotenv = dotenv {
         directory = "/assets"
@@ -45,6 +48,7 @@ class CropCaresService {
         api = retrofit.create(CropCaresApi::class.java)
     }
 
+    // Gets a care by its ID
     suspend fun getCareById(id: Int): Cares? {
         return try {
             api.getCareById(id)
@@ -54,6 +58,7 @@ class CropCaresService {
         }
     }
 
+    // Gets all cares for a specific crop
     suspend fun getCaresByCropId(cropId: Int): List<Cares> {
         return try {
             api.getCaresByCropId(cropId)

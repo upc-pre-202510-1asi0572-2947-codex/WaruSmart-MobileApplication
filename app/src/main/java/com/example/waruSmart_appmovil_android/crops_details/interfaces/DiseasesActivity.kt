@@ -20,11 +20,15 @@ import com.example.waruSmart_appmovil_android.shared.interfaces.BaseActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 
+/**
+ * Activity for displaying and managing diseases or pests for a crop.
+ */
 class DiseasesActivity : BaseActivity() {
     private lateinit var recyclerView: RecyclerView
     private val diseaseService = DiseaseService()
     private var diseaseList: List<Disease> = emptyList()
 
+    // Activity setup and initial data loading
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_diseases, findViewById(R.id.container))
@@ -52,6 +56,7 @@ class DiseasesActivity : BaseActivity() {
         setupSpinner()
     }
 
+    // Sets up the spinner for navigation between crop info screens
     private fun setupSpinner() {
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(
@@ -106,6 +111,7 @@ class DiseasesActivity : BaseActivity() {
         spinner.setSelection(diseasesPosition)
     }
 
+    // Fetches diseases by crop ID using the service
     private fun fetchDiseasesByCropId(cropId: Int) {
         Log.d("DiseasesActivity", "Fetching diseases by crop ID: $cropId")
         lifecycleScope.launch {

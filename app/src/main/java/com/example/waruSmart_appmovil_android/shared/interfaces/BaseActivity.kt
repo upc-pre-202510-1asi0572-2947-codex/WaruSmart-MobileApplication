@@ -17,11 +17,15 @@ import com.example.waruSmart_appmovil_android.sowingsManagement.interfaces.Sowin
 import com.example.waruSmart_appmovil_android.stadistics.interfaces.WaterStatisticsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/**
+ * Base activity for main screens. Handles bottom navigation and activity switching.
+ */
 open class BaseActivity : AppCompatActivity() {
+    // Handles activity creation and bottom navigation setup
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
-
+        // Handles bottom navigation item selection
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -75,15 +79,18 @@ open class BaseActivity : AppCompatActivity() {
         }
     }
 
+    // Checks if current activity is a sowings management related activity
     private fun isSowingsManagementActivity(): Boolean {
         return this is SowingsManagementActivity || this is ControlsActivity || this is CropCareActivity || this is DiseasesActivity || this is ProductsActivity
                 || this is GeneralCropInfo
     }
 
+    // Checks if current activity is a forum related activity
     private fun isForumActivity(): Boolean {
         return this is ForumManagementActivity || this is AnswersActivity
     }
 
+    // Handles bottom navigation item selection on resume
     override fun onResume() {
         super.onResume()
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)

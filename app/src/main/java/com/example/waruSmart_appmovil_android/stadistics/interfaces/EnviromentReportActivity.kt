@@ -12,22 +12,27 @@ import com.example.waruSmart_appmovil_android.R
 import com.example.waruSmart_appmovil_android.stadistics.application.services.StatisticsService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/**
+ * Activity for displaying environmental report statistics.
+ */
 class EnviromentReportActivity : BaseActivity() {
 
     private val statisticsService = StatisticsService(this)
     private lateinit var progressBar: ProgressBar
 
+    // Activity setup and initial data loading
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_water_statistics, findViewById(R.id.container))
 
-        // Configurar el BottomNavigationView
+        // Configure the BottomNavigationView
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_statistics
 
         setupSpinner()
     }
 
+    // Sets up the spinner for navigation between statistics screens
     private fun setupSpinner(){
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(

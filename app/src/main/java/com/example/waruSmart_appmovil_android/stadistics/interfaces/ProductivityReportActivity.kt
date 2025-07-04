@@ -20,6 +20,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * Activity for displaying productivity reports statistics.
+ */
 class ProductivityReportActivity : BaseActivity() {
 
     private lateinit var reportRecyclerView: RecyclerView
@@ -27,11 +30,12 @@ class ProductivityReportActivity : BaseActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var reportAdapter: ProductivityReportAdapter
 
+    // Activity setup and initial data loading
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_productivity_report, findViewById(R.id.container))
 
-        // Configurar el BottomNavigationView
+        // Configure BottomNavigationView
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_statistics
 
@@ -43,6 +47,7 @@ class ProductivityReportActivity : BaseActivity() {
         setupSpinner()
     }
 
+    // Fetches productivity reports by user ID
     private fun fetchProductivityReportsByUserId(userId: Int){
         CoroutineScope(Dispatchers.IO).launch{
             try {
@@ -60,6 +65,7 @@ class ProductivityReportActivity : BaseActivity() {
         }
     }
 
+    // Sets up the spinner for navigation between statistics screens
     private fun setupSpinner() {
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(

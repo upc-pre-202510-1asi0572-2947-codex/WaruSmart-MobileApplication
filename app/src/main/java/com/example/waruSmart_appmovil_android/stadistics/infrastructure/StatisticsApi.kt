@@ -8,20 +8,24 @@ import com.example.waruSmart_appmovil_android.stadistics.domain.model.Sowing
 import retrofit2.http.GET;
 import retrofit2.http.Path
 
+/**
+ * API for statistics endpoints
+ */
 public interface StatisticsApi {
 
+    // Get all sowings controls
     @GET("crops-management/sowings/controls")
     suspend fun getSowingsControls(): List<Control>
 
-    //Function used to get the name of the crop by the cropId
+    // Get the name of the crop by cropId
     @GET("crops-management/crops/{cropId}")
     suspend fun getCropName(@Path("cropId") cropId: Int): Crop
 
-    //Function used to get all sowings
+    // Get all sowings
     @GET("crops-management/sowings")
     suspend fun getSowings(): List<Sowing>
 
-    //Function to get productivity report
+    // Get productivity reports for a user
     @GET("reports/productivity/{userId}")
     suspend fun getProductivityReports(@Path("userId") userId: Int) : List<ProductivityReport>
 }

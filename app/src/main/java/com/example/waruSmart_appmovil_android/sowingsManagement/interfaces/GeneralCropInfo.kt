@@ -27,10 +27,14 @@ import com.example.waruSmart_appmovil_android.sowingsManagement.application.serv
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * Activity for displaying general information about a crop and its sowing.
+ */
 class GeneralCropInfo : BaseActivity() {
     private lateinit var appDB: AppDataBase
     private lateinit var sowingsService: SowingsService
 
+    // Activity setup and initial data loading
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_general_crop_info, findViewById(R.id.container))
@@ -66,6 +70,7 @@ class GeneralCropInfo : BaseActivity() {
         setupSpinner(sowingId, cropId)
     }
 
+    // Fetches sowing and crop details from database and service
     private fun fetchSowingDetails(sowingId: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             val sowing = appDB.sowingDAO().getSowingById(sowingId)
@@ -90,6 +95,7 @@ class GeneralCropInfo : BaseActivity() {
         }
     }
 
+    // Sets up the spinner for navigation between crop info screens
     private fun setupSpinner(sowingId: Int, cropId: Int) {
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(

@@ -29,6 +29,9 @@ import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * Activity for displaying the history of all sowings.
+ */
 class SowingsHistoryActivity : BaseActivity() {
 
     private lateinit var recyclerView: RecyclerView
@@ -36,6 +39,7 @@ class SowingsHistoryActivity : BaseActivity() {
     private lateinit var sowingsService: SowingsService
     private var sowings: List<Sowing> = listOf()
 
+    // Activity setup and initial data loading
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_sowings_history, findViewById(R.id.container))
@@ -57,6 +61,7 @@ class SowingsHistoryActivity : BaseActivity() {
         observeSowings()
     }
 
+    // Observes sowings from the database
     private fun observeSowings() {
         database.sowingDAO().getAllSowingsLive().observe(this, Observer { sowings ->
             sowings?.let {
@@ -65,6 +70,7 @@ class SowingsHistoryActivity : BaseActivity() {
         })
     }
 
+    // Displays the list of sowings in the RecyclerView
     private fun displaySowings(sowings: List<Sowing>) {
         recyclerView.adapter = object : RecyclerView.Adapter<SowingViewHolder>() {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SowingViewHolder {
@@ -97,6 +103,7 @@ class SowingsHistoryActivity : BaseActivity() {
         }
     }
 
+    // Shows a dialog with sowing details
     private fun showSowingDetailsDialog(sowing: Sowing) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_sowing_details, null)
         val txtCropName: TextView = dialogView.findViewById(R.id.txtCropName)
@@ -132,6 +139,7 @@ class SowingsHistoryActivity : BaseActivity() {
         dialog.show()
     }
 
+    // ViewHolder for sowing items
     class SowingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtCropName: TextView = itemView.findViewById(R.id.txtCropName)
         val imgCrop: ImageView = itemView.findViewById(R.id.imgCrop)

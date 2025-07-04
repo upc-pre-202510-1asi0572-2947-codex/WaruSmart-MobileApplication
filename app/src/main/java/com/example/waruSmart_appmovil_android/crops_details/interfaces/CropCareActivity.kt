@@ -21,17 +21,24 @@ import com.example.waruSmart_appmovil_android.shared.interfaces.BaseActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 
+/**
+ * Activity for showing and managing crop cares for a specific crop.
+ */
 class CropCareActivity : BaseActivity() {
+    // RecyclerView for displaying cares
     private lateinit var recyclerView: RecyclerView
+    // Service to fetch cares
     private val cropCaresService = CropCaresService()
+    // List of cares
     private var caresList: List<Cares> = emptyList()
 
+    // Initializes the activity and loads cares for the crop
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_crop_care, findViewById(R.id.container))
         enableEdgeToEdge()
 
-        // Configurar el BottomNavigationView
+        // Configure BottomNavigationView
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_home
 
@@ -51,6 +58,7 @@ class CropCareActivity : BaseActivity() {
         setupSpinner()
     }
 
+    // Sets up the spinner for navigation between crop info screens
     private fun setupSpinner() {
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(
@@ -96,6 +104,7 @@ class CropCareActivity : BaseActivity() {
         spinner.setSelection(cropCarePosition)
     }
 
+    // Fetches cares by crop ID using the service
     private fun fetchCaresByCropId(cropId: Int) {
         Log.d("CropCareActivity", "Fetching cares by crop ID: $cropId")
         lifecycleScope.launch {

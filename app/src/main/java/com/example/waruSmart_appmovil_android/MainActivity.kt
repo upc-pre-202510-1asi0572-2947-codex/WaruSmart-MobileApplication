@@ -13,21 +13,25 @@ import com.example.waruSmart_appmovil_android.sowingsManagement.interfaces.Sowin
 import com.example.waruSmart_appmovil_android.sowingsManagement.interfaces.SowingsManagementActivity
 import com.example.waruSmart_appmovil_android.stadistics.interfaces.WaterStatisticsActivity
 
+/**
+ * Main entry activity for the app. Handles navigation to statistics, sowings, and sowings history.
+ */
 class MainActivity : AppCompatActivity() {
+    // Activity setup and button click listeners
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        // Ajustar el padding para los system bars
+        // Adjust padding for system bars
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Botón para ir a StatisticsActivity
+        // Button to go to StatisticsActivity
         val button: Button = findViewById(R.id.button)
         button.setOnClickListener {
             startActivity(newIntent(this))
@@ -45,17 +49,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        //Funcion para ir a estadisticas
+        // Returns intent for WaterStatisticsActivity
         fun newIntent(context: Context): Intent {
             return Intent(context, WaterStatisticsActivity::class.java)
         }
 
-        // Nueva función para ir a SowingsManagementActivity
+        // Returns intent for SowingsManagementActivity
         fun newIntentSowings(context: Context): Intent {
             return Intent(context, SowingsManagementActivity::class.java)
         }
 
-        // Nueva función para ir a SowingsHistoryActivity
+        // Returns intent for SowingsHistoryActivity
         fun newIntentSowingsHistory(context: Context): Intent {
             return Intent(context, SowingsHistoryActivity::class.java)
         }

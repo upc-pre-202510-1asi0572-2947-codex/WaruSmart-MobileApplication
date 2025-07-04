@@ -25,6 +25,9 @@ import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * Activity for managing the user's sowings and crops.
+ */
 class SowingsManagementActivity : BaseActivity() {
 
     private lateinit var sowingsService: SowingsService
@@ -33,6 +36,7 @@ class SowingsManagementActivity : BaseActivity() {
     private lateinit var crops: List<Crop>
     private lateinit var appDB: AppDataBase
 
+    // Activity setup and initial data loading
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_sowings_management, findViewById(R.id.container))
@@ -65,6 +69,7 @@ class SowingsManagementActivity : BaseActivity() {
         }
     }
 
+    // Fetches sowings from the backend and displays them
     private fun fetchAndDisplaySowings() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -89,6 +94,7 @@ class SowingsManagementActivity : BaseActivity() {
         }
     }
 
+    // Displays sowings using SowingDos model
     private fun displaySowingsDos(sowings: List<SowingDos>, cropMap: Map<Int, Crop>) {
         sowingsContainer.removeAllViews()
         sowings.forEach { sowing ->
@@ -119,8 +125,7 @@ class SowingsManagementActivity : BaseActivity() {
         }
     }
 
-
-
+    // Displays sowings using Sowing model
     private fun displaySowings(sowings: List<Sowing>, cropMap: Map<Int, Crop>) {
         sowingsContainer.removeAllViews()
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -181,6 +186,7 @@ class SowingsManagementActivity : BaseActivity() {
         }
     }
 
+    // Shows dialog to add a new sowing
     private fun showAddSowingDialog() {
         val dialogView = layoutInflater.inflate(R.layout.dialog_add_sowing, null)
         val cropSpinner: Spinner = dialogView.findViewById(R.id.spinner_crop_names)
@@ -217,6 +223,7 @@ class SowingsManagementActivity : BaseActivity() {
         dialog.show()
     }
 
+    // Shows dialog to confirm sowing deletion
     private fun showDeleteSowingDialog(sowingId: Int) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_delete_sowing, null)
         val yesButton: Button = dialogView.findViewById(R.id.button_yes)
@@ -238,6 +245,7 @@ class SowingsManagementActivity : BaseActivity() {
         dialog.show()
     }
 
+    // Shows dialog to update a sowing
     private fun showUpdateSowingDialog(sowing: Sowing) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_update_sowing, null)
         val cropSpinner: Spinner = dialogView.findViewById(R.id.spinner_crop_names)
@@ -305,6 +313,7 @@ class SowingsManagementActivity : BaseActivity() {
         dialog.show()
     }
 
+    // Shows dialog to update phenological phase
     private fun showUpdatePhenologicalPhaseDialog(sowingId: Int) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_update_phenological_phase, null)
         val yesButton: Button = dialogView.findViewById(R.id.button_yes)
@@ -326,6 +335,7 @@ class SowingsManagementActivity : BaseActivity() {
         dialog.show()
     }
 
+    // Updates the phenological phase of a sowing
     private fun updatePhenologicalPhaseBySowingId(sowingId: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -356,6 +366,7 @@ class SowingsManagementActivity : BaseActivity() {
         }
     }
 
+    // Deletes a sowing from the database
     private fun deleteSowing(sowingId: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -367,6 +378,7 @@ class SowingsManagementActivity : BaseActivity() {
         }
     }
 
+    // Updates a sowing in the database
     private fun updateSowing(sowing: Sowing) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -378,6 +390,7 @@ class SowingsManagementActivity : BaseActivity() {
         }
     }
 
+    // Adds a new sowing to the backend
     private fun addSowing(cropId: Int, area: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             try {

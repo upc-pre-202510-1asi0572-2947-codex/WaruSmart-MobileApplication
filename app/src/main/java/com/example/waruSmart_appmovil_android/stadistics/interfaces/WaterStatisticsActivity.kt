@@ -16,10 +16,14 @@ import com.example.waruSmart_appmovil_android.stadistics.application.services.St
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 
+/**
+ * Activity for displaying water usage statistics.
+ */
 class WaterStatisticsActivity : BaseActivity() {
     private lateinit var statisticsService: StatisticsService
     private lateinit var progressBar: ProgressBar
 
+    // Activity setup and initial data loading
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +41,13 @@ class WaterStatisticsActivity : BaseActivity() {
         setupSpinner()
     }
 
+    // Refreshes data when activity resumes
     override fun onResume() {
         super.onResume()
         fetchData()
     }
 
+    // Fetches water statistics data
     private fun fetchData() {
         showLoading(true)
         lifecycleScope.launch {
@@ -55,10 +61,12 @@ class WaterStatisticsActivity : BaseActivity() {
         }
     }
 
+    // Shows or hides the loading indicator
     private fun showLoading(isLoading: Boolean) {
         progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
+    // Sets up the spinner for navigation between statistics screens
     private fun setupSpinner() {
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(

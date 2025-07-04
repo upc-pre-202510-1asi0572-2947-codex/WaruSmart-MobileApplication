@@ -11,6 +11,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.SocketException
 
+/**
+ * Service for handling sowings-related operations and API calls.
+ */
 class SowingsService(context: Context, private val bearerToken: String) {
 
     private val api: SowingsApi
@@ -39,6 +42,7 @@ class SowingsService(context: Context, private val bearerToken: String) {
         Log.d("SowingsService", "SowingsService initialized")
     }
 
+    // Get a crop by its ID
     suspend fun getCropById(id: Int): Crop? {
         Log.d("SowingsService", "Fetching crop with ID: $id")
         return try {
@@ -51,6 +55,7 @@ class SowingsService(context: Context, private val bearerToken: String) {
         }
     }
 
+    // Get all crops
     suspend fun getAllCrops(): List<Crop> {
         Log.d("SowingsService", "Fetching all crops")
         return try {
@@ -63,6 +68,7 @@ class SowingsService(context: Context, private val bearerToken: String) {
         }
     }
 
+    // Get sowings for a specific user by user ID
     suspend fun getSowingsByUserId(userId: Int): List<SowingDos> {
         Log.d("SowingsService", "Fetching sowings for user ID: $userId")
         return try {
@@ -78,9 +84,8 @@ class SowingsService(context: Context, private val bearerToken: String) {
         }
     }
 
+    // Add a new sowing record
     suspend fun addSowingRemote(sowing: SowingDos) {
         api.addSowing(sowing)
     }
-
-
 }

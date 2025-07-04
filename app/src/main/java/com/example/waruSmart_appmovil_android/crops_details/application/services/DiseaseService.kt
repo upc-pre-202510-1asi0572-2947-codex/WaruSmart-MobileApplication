@@ -15,6 +15,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.net.SocketException
 import java.util.Date
 
+/**
+ * Service for handling disease API requests.
+ */
 class DiseaseService {
     val dotenv = dotenv {
         directory = "/assets"
@@ -45,6 +48,7 @@ class DiseaseService {
         api = retrofit.create(DiseaseApi::class.java)
     }
 
+    // Gets a disease by its ID
     suspend fun getDiseaseById(id: Int): Disease? {
         return try {
             api.getDiseaseById(id)
@@ -54,6 +58,7 @@ class DiseaseService {
         }
     }
 
+    // Gets all diseases for a specific crop
     suspend fun getDiseasesByCropId(cropId: Int): List<Disease> {
         return try {
             api.getDiseasesByCropId(cropId)

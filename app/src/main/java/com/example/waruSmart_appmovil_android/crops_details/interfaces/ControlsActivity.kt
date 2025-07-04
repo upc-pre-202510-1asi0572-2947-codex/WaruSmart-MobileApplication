@@ -29,17 +29,22 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Date
 
+/**
+ * Activity for viewing and managing controls for a sowing.
+ */
+
 class ControlsActivity : BaseActivity() {
     private lateinit var controlRecyclerView: RecyclerView
     private lateinit var controlAdapter: ControlAdapter
     private lateinit var appDB: AppDataBase
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Activity setup and initial data loading
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_controls, findViewById(R.id.container))
         enableEdgeToEdge()
 
-        // Configurar el BottomNavigationView
+        // Configure BottomNavigationView
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_home
 
@@ -66,6 +71,7 @@ class ControlsActivity : BaseActivity() {
     }
 
     private fun fetchControlsBySowingId(sowingId: Int) {
+        // Load controls for a specific sowing from the database
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val controls = appDB.controlDAO().getControlsBySowingId(sowingId)
@@ -83,6 +89,7 @@ class ControlsActivity : BaseActivity() {
     }
 
     private fun showAddControlDialog() {
+        // Show dialog to add a new control
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_control, null)
         val sowingConditionSpinner = dialogView.findViewById<Spinner>(R.id.spinner_sowing_condition)
         val stemConditionSpinner = dialogView.findViewById<Spinner>(R.id.spinner_stem_condition)
@@ -122,6 +129,7 @@ class ControlsActivity : BaseActivity() {
     }
 
     private fun addControl(sowingId: Int, sowingCondition: String, stemCondition: String, soilMoisture: String, date: Date) {
+        // Insert a new control into the database
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val newControl = Control(
@@ -144,6 +152,7 @@ class ControlsActivity : BaseActivity() {
     }
 
     private fun onEditClick(control: Control) {
+        // Handle edit action for a control
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_control, null)
         val sowingConditionSpinner = dialogView.findViewById<Spinner>(R.id.spinner_sowing_condition)
         val stemConditionSpinner = dialogView.findViewById<Spinner>(R.id.spinner_stem_condition)
@@ -184,6 +193,7 @@ class ControlsActivity : BaseActivity() {
     }
 
     private fun updateControl(control: Control) {
+        // Update a control in the database
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 appDB.controlDAO().updateControl(control)
@@ -198,6 +208,7 @@ class ControlsActivity : BaseActivity() {
     }
 
     private fun onDeleteClick(control: Control) {
+        // Handle delete action for a control
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 appDB.controlDAO().deleteControl(control.id)
@@ -212,6 +223,7 @@ class ControlsActivity : BaseActivity() {
     }
 
     private fun setupSpinner() {
+        // Setup spinner for navigation between crop info screens
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(
             this,
