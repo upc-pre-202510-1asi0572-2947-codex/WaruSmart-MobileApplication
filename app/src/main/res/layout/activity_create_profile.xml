@@ -76,6 +76,14 @@
             android:layout_gravity="center_horizontal"
             android:background="@drawable/login_edit_text_background" />
 
+        <Spinner
+            android:id="@+id/spinnerRole"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/login_edit_text_background" />
+
         <Button
             android:id="@+id/btnSignUp"
             android:layout_width="160dp"

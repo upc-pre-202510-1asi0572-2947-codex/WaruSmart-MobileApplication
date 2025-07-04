@@ -25,6 +25,7 @@ class CreateProfileActivity : AppCompatActivity() {
 
     private lateinit var spinnerCountry: Spinner
     private lateinit var spinnerCity: Spinner
+    private lateinit var spinnerRole: Spinner
     private lateinit var profileServiceImpl: ProfileServiceImpl
 
     @SuppressLint("MissingInflatedId")
@@ -40,11 +41,13 @@ class CreateProfileActivity : AppCompatActivity() {
 
         spinnerCountry = findViewById(R.id.spinnerCountry)
         spinnerCity = findViewById(R.id.spinnerCity)
+        spinnerRole = findViewById(R.id.spinnerRole)
         val btnSignUp: Button = findViewById(R.id.btnSignUp)
 
         profileServiceImpl = ProfileServiceImpl(RetrofitClient.profileService)
 
         setupCountrySpinner()
+        setupRoleSpinner()
 
         btnSignUp.setOnClickListener {
 
@@ -53,11 +56,12 @@ class CreateProfileActivity : AppCompatActivity() {
 
             val selectedCountry = spinnerCountry.selectedItem.toString()
             val selectedCity = spinnerCity.selectedItem.toString()
+            val selectedRole = spinnerRole.selectedItem.toString()
 
             val countryId = CountryCityData.countries[selectedCountry]
             val cityId = CountryCityData.cities[countryId]?.indexOf(selectedCity)?.plus(1) // Assuming that cities are indexed from 1
 
-            val StrUserId = findViewById<EditText>(R.id.edtId).text.toString(); //TODO The api needs a given user id ?????????????????????????
+            val StrUserId = findViewById<EditText>(R.id.edtId).text.toString(); //TODO: The api needs a given user id ?????????????????????????
             val userId = StrUserId.toInt()
 
             if (countryId != null && cityId != null) {
@@ -81,7 +85,7 @@ class CreateProfileActivity : AppCompatActivity() {
                 }
 
                 if (token != null) {
-                    val profileRequest = ProfileRequest(firtName, lastName, email.toString(), subscriptionId, countryId, cityId, userId)
+                    val profileRequest = ProfileRequest(firtName, lastName, email.toString(), subscriptionId, countryId, cityId, userId, selectedRole)
                     profileServiceImpl.saveProfile(token, profileRequest) { profileResponse ->
                         if (profileResponse != null) {
                             Toast.makeText(this, "Profile saved successfully", Toast.LENGTH_LONG).show()
@@ -131,5 +135,14 @@ class CreateProfileActivity : AppCompatActivity() {
             cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinnerCity.adapter = cityAdapter
         }
+    }
+
+    //Defines roles for the user
+    private fun setupRoleSpinner(){
+        ArrayAdapter.createFromResource(this, R.array.roles_options, android.R.layout.simple_spinner_item)
+            .also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinnerRole.adapter = adapter
+            }
     }
 }

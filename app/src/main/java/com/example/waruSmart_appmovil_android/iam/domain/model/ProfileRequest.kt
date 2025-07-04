@@ -7,5 +7,6 @@ data class ProfileRequest(
     val cityId: Int,
     val subscriptionId: Int,
     val countryId: Int,
-    val userId: Int
+    val userId: Int,
+    val role: String
 )

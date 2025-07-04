@@ -12,7 +12,7 @@ import retrofit2.Response
 class ProfileServiceImpl(private val profileService: ProfileService) {
 
     fun saveProfile(token: String, request: ProfileRequest, callback: (ProfileResponse?) -> Unit) {
-        Log.d("Data de perfil a crear", request.toString())
+        Log.d("Data for profile to create", request.toString())
         val call = profileService.saveProfile("Bearer $token", request)
         call.enqueue(object : Callback<ProfileResponse> {
             override fun onResponse(call: Call<ProfileResponse>, response: Response<ProfileResponse>) {

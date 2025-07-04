@@ -23,6 +23,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+* Activity for showing IOT Devices in a sowing
+*/
+
 class DeviceActivity : BaseActivity() {
     private lateinit var deviceRecyclerView: RecyclerView
     private lateinit var deviceService: DeviceService
