@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom"
-    android:background="#005F40"
-    android:backgroundTint="#005F40"
+    android:background="#3E7C59"
+    android:backgroundTint="@color/green"
     app:itemTextColor="@color/white"
     app:itemIconTint="#000000"
     app:menu="@menu/bottom_navigation_menu" />

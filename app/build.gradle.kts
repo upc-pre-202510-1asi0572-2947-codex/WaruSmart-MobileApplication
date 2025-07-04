@@ -1,15 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    // id("com.android.application") Commented because line 2 already adds it
+    // Add the Google services Gradle plugin
+    id("com.google.gms.google-services")
     kotlin("kapt")
 }
 
 android {
-    namespace = "com.example.chaquitaclla_appmovil_android"
+    namespace = "com.example.waruSmart_appmovil_android"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.chaquitaclla_appmovil_android"
+        applicationId = "com.example.waruSmart_appmovil_android"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
@@ -65,6 +68,10 @@ dependencies {
     // Coil dependencies for image loading
     implementation("io.coil-kt:coil-compose:2.6.0")
 
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:33.16.0"))
+    //implementation("com.google.firebase:firebase-appdistribution-api-ktx")
+
     // Navigation dependencies
     // implementation("androidx.navigation:navigation-compose:2.7.7")
 
@@ -102,3 +109,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
+
+/*firebaseAppDistribution{
+    appId = "1:598322123109:android:f40d82f76ae03ab2c7118c"
+    releaseNotes = "Test version"
+    testers = "christopmore28@gmail.com"
+}*/

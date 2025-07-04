@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ProductsActivity">
+    tools:context=".crops.interfaces.ProductsActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/add_product"
-        android:backgroundTint="#9A5D4E"
+        android:backgroundTint="@color/brown"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

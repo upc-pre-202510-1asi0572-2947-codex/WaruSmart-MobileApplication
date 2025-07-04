@@ -7,7 +7,7 @@
     android:id="@+id/rlLogIn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".iam.activitys.SignInActivity"
+    tools:context=".iam.interfaces.SignInActivity"
     android:background="#D9D9D9">
 
     <ImageView
@@ -99,7 +99,7 @@
             android:fontFamily="@font/poppins"
             android:text="LogIn"
             android:textSize="18dp"
-            android:backgroundTint="#005F40"
+            android:backgroundTint="#3E7C59"
             app:cornerRadius="10dp"/>
 
         <Button
@@ -111,7 +111,7 @@
             android:fontFamily="@font/poppins"
             android:text="SignUp"
             android:textSize="18dp"
-            android:backgroundTint="#005F40"
+            android:backgroundTint="#3E7C59"
             app:cornerRadius="10dp"/>
 
     </LinearLayout>
