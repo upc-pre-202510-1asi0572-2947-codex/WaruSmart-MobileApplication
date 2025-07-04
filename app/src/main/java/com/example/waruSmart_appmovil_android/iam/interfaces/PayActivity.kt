@@ -27,13 +27,13 @@ class PayActivity : AppCompatActivity() {
             startActivity(goProfile(this))
         }
 
-        // Recibe los datos del intent
+        // Recives intent data
         val title = intent.getStringExtra("title")
         val cost = intent.getStringExtra("cost")
         val text1 = intent.getStringExtra("text1")
         val text2 = intent.getStringExtra("text2")
 
-        // Actualiza el contenido del card
+        // Update card content
         val payTitle: TextView = findViewById(R.id.payTitle)
         val payCost: TextView = findViewById(R.id.payCost)
         val payText1: TextView = findViewById(R.id.payText1)
@@ -45,7 +45,7 @@ class PayActivity : AppCompatActivity() {
         payText1.text = text1
         payText2.text = text2
 
-        // Aplica la validación para cambiar el color según el título
+        // Validates to change color according to subscription
         when (title) {
             "Basic" -> cardButton.setCardBackgroundColor(getColor(R.color.basic))
             "Regular" -> cardButton.setCardBackgroundColor(getColor(R.color.regular))
