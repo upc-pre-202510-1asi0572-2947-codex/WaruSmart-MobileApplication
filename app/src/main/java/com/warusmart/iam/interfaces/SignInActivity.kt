@@ -14,7 +14,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.warusmart.R
 import com.warusmart.iam.domain.model.SessionManager
-import com.warusmart.iam.infrastructure.DB.RetrofitClient
+import com.warusmart.iam.infrastructure.RetrofitClient
 import com.warusmart.iam.domain.model.SignInRequest
 import com.warusmart.iam.application.services.AuthServiceImpl
 import com.warusmart.iam.application.services.ProfileServiceImpl

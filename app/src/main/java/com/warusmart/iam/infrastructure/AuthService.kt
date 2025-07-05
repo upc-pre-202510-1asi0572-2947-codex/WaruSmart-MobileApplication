@@ -9,9 +9,16 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface AuthService {
+
+    /**
+     * Creates a new user with the given username and password
+     */
     @POST("authentication/sign-up")
     fun signUp(@Body request: SignUpRequest): Call<SignUpResponse>
 
+    /**
+     * Signs in if the user exists and the password is correct
+     */
     @POST("authentication/sign-in")
     fun signIn(@Body request: SignInRequest): Call<SignInResponse>
 

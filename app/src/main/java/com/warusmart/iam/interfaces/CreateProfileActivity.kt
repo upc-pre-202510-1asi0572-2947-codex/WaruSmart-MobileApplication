@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.warusmart.iam.domain.model.CountryCityData
 import com.warusmart.R
 import com.warusmart.iam.domain.model.SessionManager
-import com.warusmart.iam.infrastructure.DB.RetrofitClient
+import com.warusmart.iam.infrastructure.RetrofitClient
 import com.warusmart.iam.domain.model.ProfileRequest
 import com.warusmart.iam.application.services.ProfileServiceImpl
 
@@ -27,6 +27,7 @@ class CreateProfileActivity : AppCompatActivity() {
     private lateinit var spinnerCity: Spinner
     private lateinit var spinnerRole: Spinner
     private lateinit var profileServiceImpl: ProfileServiceImpl
+    private val userId = SessionManager.id
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,9 +62,6 @@ class CreateProfileActivity : AppCompatActivity() {
             val countryId = CountryCityData.countries[selectedCountry]
             val cityId = CountryCityData.cities[countryId]?.indexOf(selectedCity)?.plus(1) // Assuming that cities are indexed from 1
 
-            val StrUserId = findViewById<EditText>(R.id.edtId).text.toString(); //TODO: The api needs a given user id ?????????????????????????
-            val userId = StrUserId.toInt()
-
             if (countryId != null && cityId != null) {
 
                 val email = SessionManager.username
@@ -84,7 +82,7 @@ class CreateProfileActivity : AppCompatActivity() {
                     subscriptionId = 3
                 }
 
-                if (token != null) {
+                if (token != null && userId != null) {
                     val profileRequest = ProfileRequest(firtName, lastName, email.toString(), subscriptionId, countryId, cityId, userId, selectedRole)
                     profileServiceImpl.saveProfile(token, profileRequest) { profileResponse ->
                         if (profileResponse != null) {

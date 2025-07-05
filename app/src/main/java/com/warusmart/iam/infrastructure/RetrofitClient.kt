@@ -1,7 +1,5 @@
-package com.warusmart.iam.infrastructure.DB
+package com.warusmart.iam.infrastructure
 
-import com.warusmart.iam.infrastructure.AuthService
-import com.warusmart.iam.infrastructure.ProfileService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import io.github.cdimascio.dotenv.dotenv

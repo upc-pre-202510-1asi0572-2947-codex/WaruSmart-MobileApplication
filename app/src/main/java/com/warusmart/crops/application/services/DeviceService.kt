@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.warusmart.crops.domain.model.beans.Device
 import com.warusmart.crops.infrastructure.DeviceApi
+import io.github.cdimascio.dotenv.dotenv
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
@@ -12,7 +13,11 @@ import java.net.SocketException
 
 class DeviceService(context: Context, private val bearerToken: String) {
 
-    private val apiUrl = "https://f0b4-179-7-92-165.ngrok-free.app/api/v1/\n"
+    private val dotenv = dotenv {
+        directory = "/assets"
+        filename = "env"
+    }
+    private val apiUrl = dotenv["API_URL"]
     private val api: DeviceApi
 
     init {

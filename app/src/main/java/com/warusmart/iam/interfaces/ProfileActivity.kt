@@ -13,7 +13,7 @@ import com.warusmart.shared.interfaces.BaseActivity
 import com.warusmart.iam.domain.model.CountryCityData
 import com.warusmart.R
 import com.warusmart.iam.domain.model.SessionManager
-import com.warusmart.iam.infrastructure.DB.RetrofitClient
+import com.warusmart.iam.infrastructure.RetrofitClient
 import com.warusmart.iam.domain.model.ProfileRequestUpdate
 import com.warusmart.iam.domain.model.ProfileResponse
 import com.warusmart.iam.application.services.ProfileServiceImpl

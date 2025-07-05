@@ -9,7 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.warusmart.R
-import com.warusmart.iam.infrastructure.DB.RetrofitClient
+import com.warusmart.iam.infrastructure.RetrofitClient
 import com.warusmart.iam.domain.model.SignUpRequest
 import com.warusmart.iam.application.services.AuthServiceImpl
 
