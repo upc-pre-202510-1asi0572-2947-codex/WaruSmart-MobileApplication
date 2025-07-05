@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".forum.interfaces.AnswersActivity"
+    tools:context="com.warusmart.forum.interfaces.AnswersActivity"
     android:orientation="vertical"
     android:padding="10dp">
 
