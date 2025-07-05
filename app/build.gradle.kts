@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.waruSmart_appmovil_android"
+    namespace = "com.warusmart"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.waruSmart_appmovil_android"
+        applicationId = "com.warusmart"
         minSdk = 28
         targetSdk = 34
         versionCode = 1

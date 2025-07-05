@@ -1,6 +1,0 @@
-package com.example.waruSmart_appmovil_android.iam.domain.model
-
-data class SignInRequest(
-    val username: String,
-    val password: String
-)

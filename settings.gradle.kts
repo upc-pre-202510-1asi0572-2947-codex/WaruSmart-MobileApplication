@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "WaruSmart_appmovil_android"
+rootProject.name = "warusmart"
 include(":app")
