@@ -7,7 +7,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.warusmart.crops.application.adapters.ControlAdapter
+import com.warusmart.crops.interfaces.adapters.ControlAdapter
 import com.warusmart.shared.domain.model.Entities.Control
 import android.app.AlertDialog
 import android.content.Intent
@@ -16,7 +16,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
-import com.warusmart.sowings.interfaces.GeneralCropInfo
+import com.warusmart.sowings.interfaces.activities.GeneralCropInfo
 import com.warusmart.R
 import com.warusmart.crops.domain.model.value_objects.SowingCondition
 import com.warusmart.crops.domain.model.value_objects.SowingSoilMoisture

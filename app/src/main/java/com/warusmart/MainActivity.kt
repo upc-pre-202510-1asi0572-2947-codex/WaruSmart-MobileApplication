@@ -9,10 +9,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.warusmart.R
-import com.warusmart.sowings.interfaces.SowingsHistoryActivity
-import com.warusmart.sowings.interfaces.SowingsManagementActivity
-import com.warusmart.stadistics.interfaces.WaterStatisticsActivity
+import com.warusmart.sowings.interfaces.activities.SowingsHistoryActivity
+import com.warusmart.sowings.interfaces.activities.SowingsManagementActivity
+import com.warusmart.stadistics.interfaces.activities.WaterStatisticsActivity
 
 /**
  * Main entry activity for the app. Handles navigation to statistics, sowings, and sowings history.

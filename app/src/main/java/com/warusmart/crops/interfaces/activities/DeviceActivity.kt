@@ -10,12 +10,12 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.warusmart.sowings.interfaces.GeneralCropInfo
+import com.warusmart.sowings.interfaces.activities.GeneralCropInfo
 import com.warusmart.R
 import com.warusmart.iam.domain.model.SessionManager
 import com.warusmart.crops.application.services.DeviceService
-import com.warusmart.crops.application.adapters.DeviceAdapter
-import com.warusmart.iam.interfaces.SignInActivity
+import com.warusmart.crops.interfaces.adapters.DeviceAdapter
+import com.warusmart.iam.interfaces.activities.SignInActivity
 import com.warusmart.shared.interfaces.BaseActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.CoroutineScope

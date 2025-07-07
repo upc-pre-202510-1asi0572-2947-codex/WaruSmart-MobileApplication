@@ -12,10 +12,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.warusmart.sowings.interfaces.GeneralCropInfo
+import com.warusmart.sowings.interfaces.activities.GeneralCropInfo
 import com.warusmart.R
 import com.warusmart.crops.application.services.CropCaresService
-import com.warusmart.crops.application.adapters.CropCareAdapter
+import com.warusmart.crops.interfaces.adapters.CropCareAdapter
 import com.warusmart.crops.domain.model.beans.Cares
 import com.warusmart.shared.interfaces.BaseActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView

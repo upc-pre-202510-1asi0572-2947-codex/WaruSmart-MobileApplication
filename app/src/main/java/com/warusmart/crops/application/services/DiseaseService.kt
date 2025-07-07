@@ -1,6 +1,6 @@
 package com.warusmart.crops.application.services
 
-import CustomDateTypeAdapter
+import com.warusmart.crops.interfaces.adapters.CustomDateTypeAdapter
 import android.util.Log
 import com.warusmart.iam.domain.model.SessionManager
 import com.warusmart.crops.domain.model.beans.Disease

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.warusmart.sowings.interfaces.GeneralCropInfo">
+    tools:context="com.warusmart.sowings.interfaces.activities.GeneralCropInfo">
 
     <TextView
         android:layout_width="match_parent"
