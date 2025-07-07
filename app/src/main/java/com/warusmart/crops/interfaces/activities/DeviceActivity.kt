@@ -1,4 +1,4 @@
-package com.warusmart.crops.interfaces
+package com.warusmart.crops.interfaces.activities
 
 import android.content.Intent
 import android.os.Bundle

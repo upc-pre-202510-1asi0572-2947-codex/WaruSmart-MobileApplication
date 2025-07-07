@@ -20,7 +20,7 @@ import com.warusmart.shared.application.DB.AppDataBase
 import android.widget.Toast
 import com.warusmart.R
 import com.warusmart.iam.domain.model.SessionManager
-import com.warusmart.crops.interfaces.DeviceActivity
+import com.warusmart.crops.interfaces.activities.DeviceActivity
 import com.warusmart.iam.interfaces.SignInActivity
 import com.warusmart.shared.interfaces.BaseActivity
 import com.warusmart.sowings.application.services.SowingsService
@@ -54,7 +54,7 @@ class GeneralCropInfo : BaseActivity() {
         if (token != null) {
             sowingsService = SowingsService(this, token)
         } else {
-            Toast.makeText(this, "Token no encontrado. Inicia sesión nuevamente.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Token not found. Restart sesion.", Toast.LENGTH_LONG).show()
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
             return

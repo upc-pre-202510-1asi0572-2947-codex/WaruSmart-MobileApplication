@@ -1,4 +1,4 @@
-package com.warusmart.crops.interfaces
+package com.warusmart.crops.interfaces.activities
 
 import com.warusmart.shared.application.DB.AppDataBase
 import android.os.Bundle

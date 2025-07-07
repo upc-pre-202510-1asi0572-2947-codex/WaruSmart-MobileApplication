@@ -55,15 +55,15 @@
             android:name="com.warusmart.stadistics.interfaces.WaterStatisticsActivity"
             android:exported="false" />
         <activity
-            android:name="com.warusmart.crops.interfaces.DeviceActivity"
+            android:name="com.warusmart.crops.interfaces.activities.DeviceActivity"
             android:exported="false" />
         <activity
             android:name="com.warusmart.MainActivity"
             android:exported="false" />
-        <activity android:name="com.warusmart.crops.interfaces.CropCareActivity" />
-        <activity android:name="com.warusmart.crops.interfaces.ControlsActivity" />
-        <activity android:name="com.warusmart.crops.interfaces.DiseasesActivity" />
-        <activity android:name="com.warusmart.crops.interfaces.ProductsActivity" />
+        <activity android:name="com.warusmart.crops.interfaces.activities.CropCareActivity" />
+        <activity android:name="com.warusmart.crops.interfaces.activities.ControlsActivity" />
+        <activity android:name="com.warusmart.crops.interfaces.activities.DiseasesActivity" />
+        <activity android:name="com.warusmart.crops.interfaces.activities.ProductsActivity" />
         <activity android:name="com.warusmart.sowings.interfaces.GeneralCropInfo" />
         <activity android:name="com.warusmart.sowings.interfaces.SowingsHistoryActivity" />
         <activity

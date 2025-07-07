@@ -3,11 +3,11 @@ package com.warusmart.shared.interfaces
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.warusmart.crops.interfaces.ControlsActivity
-import com.warusmart.crops.interfaces.CropCareActivity
-import com.warusmart.crops.interfaces.DiseasesActivity
+import com.warusmart.crops.interfaces.activities.ControlsActivity
+import com.warusmart.crops.interfaces.activities.CropCareActivity
+import com.warusmart.crops.interfaces.activities.DiseasesActivity
 import com.warusmart.sowings.interfaces.GeneralCropInfo
-import com.warusmart.crops.interfaces.ProductsActivity
+import com.warusmart.crops.interfaces.activities.ProductsActivity
 import com.warusmart.R
 import com.warusmart.sowings.interfaces.SowingsHistoryActivity
 import com.warusmart.forum.interfaces.AnswersActivity

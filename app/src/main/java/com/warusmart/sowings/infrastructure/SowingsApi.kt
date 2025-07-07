@@ -23,7 +23,7 @@ interface SowingsApi {
     suspend fun addSowing(@Body sowing: SowingDos)
 
     // Get all sowings for a user
-    @GET("crops-management/sowings/{userId}/user")
+    @GET("crops-management/sowings/user/{userId}")
     suspend fun getSowingsByUserId(@Path("userId") userId: Int): List<SowingDos>
 
 }
