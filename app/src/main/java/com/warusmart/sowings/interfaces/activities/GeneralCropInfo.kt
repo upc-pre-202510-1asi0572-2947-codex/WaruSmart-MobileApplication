@@ -73,8 +73,10 @@ class GeneralCropInfo : BaseActivity() {
 
     // Fetches sowing and crop details from database and service
     private fun fetchSowingDetails(sowingId: Int) {
+        Log.d("GeneralCropInfo", "Fetching sowings with id $sowingId")
         CoroutineScope(Dispatchers.IO).launch {
-            val sowing = appDB.sowingDAO().getSowingById(sowingId)
+            //val sowing = appDB.sowingDAO().getSowingById(sowingId)
+            val sowing = sowingsService.getSowingById(sowingId)
             val crop = sowing?.let { sowingsService.getCropById(it.cropId) }
             withContext(Dispatchers.Main) {
                 sowing?.let {
@@ -85,10 +87,13 @@ class GeneralCropInfo : BaseActivity() {
                     val description = crop?.description ?: "No description available"
 
                     val outputFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                    val formattedDate = outputFormat.format(it.startDate)
+                    Log.d("GeneralCropInfo", "output format")
+                    Log.d("GeneralCropInfo", it.startDate.toString())
+                    //val formattedDate = outputFormat.format(it.startDate)
+                    Log.d("GeneralCropInfo", "Fromated date")
 
                     findViewById<TextView>(R.id.right_text_1).text = cropName
-                    findViewById<TextView>(R.id.right_text_2).text = formattedDate
+                    findViewById<TextView>(R.id.right_text_2).text = it.startDate.toString()
                     findViewById<TextView>(R.id.right_text_3).text = "$area m²"
                     findViewById<TextView>(R.id.crop_description).text = description
                 }

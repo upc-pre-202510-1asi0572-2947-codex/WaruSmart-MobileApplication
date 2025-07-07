@@ -37,4 +37,9 @@ interface SowingsApi {
     @GET("crops-management/sowings/user/{userId}")
     suspend fun getSowingsByUserId(@Path("userId") userId: Int): List<SowingDos>
 
+    /**
+     * Gets a sowing by its ID from the API.
+     */
+    @GET("crops-management/sowings/{id}")
+    suspend fun getSowingById(@Path("id") id: Int): SowingDos
 }
