@@ -4,7 +4,9 @@ import com.warusmart.crops.domain.model.beans.Disease
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-// API for crop diseases
+/**
+ * Retrofit API interface for disease endpoints.
+ */
 interface DiseaseApi {
     // Get a disease by its ID
     @GET("crops-management/crops/diseases/{id}")

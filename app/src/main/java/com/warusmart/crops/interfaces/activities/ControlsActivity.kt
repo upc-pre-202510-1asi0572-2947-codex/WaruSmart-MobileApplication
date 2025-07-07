@@ -88,8 +88,10 @@ class ControlsActivity : BaseActivity() {
         }
     }
 
+    /**
+     * Shows dialog to add a new control.
+     */
     private fun showAddControlDialog() {
-        // Show dialog to add a new control
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_control, null)
         val sowingConditionSpinner = dialogView.findViewById<Spinner>(R.id.spinner_sowing_condition)
         val stemConditionSpinner = dialogView.findViewById<Spinner>(R.id.spinner_stem_condition)
@@ -128,8 +130,10 @@ class ControlsActivity : BaseActivity() {
         dialog.show()
     }
 
+    /**
+     * Adds a new control to the database.
+     */
     private fun addControl(sowingId: Int, sowingCondition: String, stemCondition: String, soilMoisture: String, date: Date) {
-        // Insert a new control into the database
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val newControl = Control(

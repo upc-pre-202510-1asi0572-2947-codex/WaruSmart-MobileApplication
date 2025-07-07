@@ -12,6 +12,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.SocketException
 
+/**
+ * Service for handling forum answers, including API communication.
+ */
 class AnswersService {
     val dotenv = dotenv(){
         directory = "/assets"
@@ -38,6 +41,9 @@ class AnswersService {
         api = retrofit.create(ForumApi::class.java)
     }
 
+    /**
+     * Retrieves all answers for a specific question from the API.
+     */
     suspend fun getAllAnswersByQuestionId(questionId: Int): List<Answer> {
         return try {
             val answers = api.getAnswersByQuestionId(questionId)
@@ -49,6 +55,9 @@ class AnswersService {
         }
     }
 
+    /**
+     * Adds a new answer using the API.
+     */
     suspend fun addAnswer(answer: AnswerPost) {
         try {
             api.addAnswer(answer)

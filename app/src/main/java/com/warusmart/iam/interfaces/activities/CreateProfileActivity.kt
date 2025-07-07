@@ -21,6 +21,10 @@ import com.warusmart.iam.infrastructure.RetrofitClient
 import com.warusmart.iam.domain.model.ProfileRequest
 import com.warusmart.iam.application.services.ProfileServiceImpl
 
+/**
+ * Activity for creating a new user profile after plan selection.
+ * Handles user input, validation, and profile creation logic.
+ */
 class CreateProfileActivity : AppCompatActivity() {
 
     private lateinit var spinnerCountry: Spinner
@@ -107,6 +111,9 @@ class CreateProfileActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Sets up the country spinner with available countries.
+     */
     private fun setupCountrySpinner() {
         val countryNames = CountryCityData.countries.keys.toList()
         val countryAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, countryNames)
@@ -126,6 +133,9 @@ class CreateProfileActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Sets up the city spinner based on the selected country.
+     */
     private fun setupCitySpinner(countryId: Int?) {
         countryId?.let {
             val cityNames = CountryCityData.cities[it] ?: emptyList()
@@ -135,7 +145,9 @@ class CreateProfileActivity : AppCompatActivity() {
         }
     }
 
-    //Defines roles for the user
+    /**
+     * Sets up the role spinner with available roles.
+     */
     private fun setupRoleSpinner(){
         ArrayAdapter.createFromResource(this, R.array.roles_options, android.R.layout.simple_spinner_item)
             .also { adapter ->

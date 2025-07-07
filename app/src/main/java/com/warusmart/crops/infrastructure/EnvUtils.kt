@@ -5,6 +5,9 @@ import android.content.Context
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
+/**
+ * Utility object for loading environment variables from asset files.
+ */
 object EnvUtils {
     fun loadEnv(context: Context, fileName: String): Map<String, String> {
         val envMap = mutableMapOf<String, String>()

@@ -1,5 +1,8 @@
 package com.warusmart.iam.domain.model
 
+/**
+ * Data class representing the request to create a user profile.
+ */
 data class ProfileRequest(
     val firstName: String,
     val lastName: String,

@@ -6,6 +6,10 @@ import io.github.cdimascio.dotenv.dotenv
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Singleton object for configuring and providing Retrofit services.
+ * Loads API base URL from environment and exposes AuthService and ProfileService.
+ */
 object RetrofitClient {
     val dotenv = dotenv() {
         directory = "/assets"

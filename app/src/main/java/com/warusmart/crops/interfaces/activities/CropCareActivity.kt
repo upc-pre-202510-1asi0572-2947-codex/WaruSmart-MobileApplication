@@ -32,7 +32,9 @@ class CropCareActivity : BaseActivity() {
     // List of cares
     private var caresList: List<Cares> = emptyList()
 
-    // Initializes the activity and loads cares for the crop
+    /**
+     * Initializes the activity and loads cares for the crop.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_crop_care, findViewById(R.id.container))
@@ -58,7 +60,9 @@ class CropCareActivity : BaseActivity() {
         setupSpinner()
     }
 
-    // Sets up the spinner for navigation between crop info screens
+    /**
+     * Sets up the spinner for navigation between crop info screens.
+     */
     private fun setupSpinner() {
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(
@@ -104,7 +108,9 @@ class CropCareActivity : BaseActivity() {
         spinner.setSelection(cropCarePosition)
     }
 
-    // Fetches cares by crop ID using the service
+    /**
+     * Fetches cares by crop ID using the service.
+     */
     private fun fetchCaresByCropId(cropId: Int) {
         Log.d("CropCareActivity", "Fetching cares by crop ID: $cropId")
         lifecycleScope.launch {

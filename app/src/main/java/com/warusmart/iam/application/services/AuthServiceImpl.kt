@@ -10,8 +10,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * Implementation of authentication logic using AuthService.
+ * Handles user sign up and sign in operations with callbacks for result handling.
+ */
 class AuthServiceImpl(private val authService: AuthService) {
 
+    /**
+     * Registers a new user using the provided request and returns the result via callback.
+     */
     fun signUp(request: SignUpRequest, callback: (SignUpResponse?) -> Unit) {
         Log.d("Authentication service","Called signup")
         authService.signUp(request).enqueue(object : Callback<SignUpResponse> {
@@ -31,6 +38,9 @@ class AuthServiceImpl(private val authService: AuthService) {
         })
     }
 
+    /**
+     * Authenticates a user using the provided credentials and returns the result via callback.
+     */
     fun signIn(request: SignInRequest, callback: (SignInResponse?) -> Unit) {
         Log.d("Authentication service","Called signin")
         authService.signIn(request).enqueue(object : Callback<SignInResponse> {

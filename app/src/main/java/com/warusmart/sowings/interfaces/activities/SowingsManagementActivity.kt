@@ -27,6 +27,7 @@ import java.util.*
 
 /**
  * Activity for managing the user's sowings and crops.
+ * Handles UI setup, crop management, and sowing operations.
  */
 class SowingsManagementActivity : BaseActivity() {
 
@@ -36,7 +37,9 @@ class SowingsManagementActivity : BaseActivity() {
     private lateinit var crops: List<Crop>
     private lateinit var appDB: AppDataBase
 
-    // Activity setup and initial data loading
+    /**
+     * Activity setup and initial data loading.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_sowings_management, findViewById(R.id.container))
@@ -69,7 +72,9 @@ class SowingsManagementActivity : BaseActivity() {
         }
     }
 
-    // Fetches sowings from the backend and displays them
+    /**
+    * Fetches sowings from the backend and displays them
+    */
     private fun fetchAndDisplaySowings() {
         CoroutineScope(Dispatchers.IO).launch {
             try {

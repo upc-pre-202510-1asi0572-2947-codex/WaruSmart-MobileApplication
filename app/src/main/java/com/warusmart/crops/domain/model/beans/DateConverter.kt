@@ -4,6 +4,9 @@ package Entities
 import androidx.room.TypeConverter
 import java.util.Date
 
+/**
+ * Object for converting between Date and Long for Room database.
+ */
 object DateConverter {
     @TypeConverter
     fun fromTimestamp(value: Long?): Date? {

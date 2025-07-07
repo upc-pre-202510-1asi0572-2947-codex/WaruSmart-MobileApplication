@@ -8,19 +8,31 @@ import androidx.recyclerview.widget.RecyclerView
 import com.warusmart.R
 import com.warusmart.crops.domain.model.beans.Device
 
+/**
+ * RecyclerView Adapter for displaying devices in a list.
+ */
 class DeviceAdapter(
     private val devices: List<Device>,
 ) : RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder>() {
 
+    /**
+     * Creates and returns a new DeviceViewHolder.
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_device, parent, false)
         return DeviceViewHolder(view)
     }
 
+    /**
+     * Returns the total number of devices in the list.
+     */
     override fun getItemCount(): Int {
         return devices.size
     }
 
+    /**
+     * Binds the device data to the ViewHolder.
+     */
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
         val device = devices[position]
         holder.bid(device)
@@ -33,6 +45,9 @@ class DeviceAdapter(
         private val deviceLastSyncTextView: TextView = itemView.findViewById(R.id.decieLastSyncTextView)
         private val deviceLocationTextView: TextView = itemView.findViewById(R.id.deviceLocationTextView)
 
+        /**
+         * Binds the device data to the UI elements.
+         */
         fun bid(device: Device){
             deviceNameTextView.text = device.title
             deviceTypeTextView.text = "Sensor Type: ${device.type}"

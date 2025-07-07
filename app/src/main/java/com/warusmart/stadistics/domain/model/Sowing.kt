@@ -13,6 +13,9 @@ package com.warusmart.stadistics.domain.model
  *     "cropId": 1,
  *     "phenologicalPhaseName": "Germination"
  *   }
+ *
+ * Represents a sowing record for statistics purposes.
+ * Contains sowing attributes such as dates, area, status, and crop information.
  */
 class Sowing(
     var id: Int,

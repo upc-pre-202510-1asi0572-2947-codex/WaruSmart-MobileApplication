@@ -19,6 +19,10 @@ import com.warusmart.iam.domain.model.ProfileResponse
 import com.warusmart.iam.application.services.ProfileServiceImpl
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+/**
+ * Activity for displaying and editing the user's profile.
+ * Handles profile data loading, editing, and logout functionality.
+ */
 class ProfileActivity : BaseActivity() {
     private lateinit var edtName: EditText
     private lateinit var spinnerCountry: Spinner
@@ -113,6 +117,9 @@ class ProfileActivity : BaseActivity() {
         }
     }
 
+    /**
+     * Enables or disables the profile editing fields.
+     */
     private fun setEditTextsEnabled(enabled: Boolean) {
         edtName.isEnabled = enabled
         spinnerCountry.isEnabled = enabled
@@ -120,6 +127,9 @@ class ProfileActivity : BaseActivity() {
         edtPassword.isEnabled = enabled
     }
 
+    /**
+     * Updates the UI with the profile data.
+     */
     private fun updateUI(profile: ProfileResponse) {
         edtName.setText(profile.fullName)
         val countryName = CountryCityData.countries.entries.find { it.value == profile.countryId }?.key
@@ -146,6 +156,9 @@ class ProfileActivity : BaseActivity() {
         edtPassword.setText("********") // Placeholder for password
     }
 
+    /**
+     * Sets up the country spinner with available countries.
+     */
     private fun setupCountrySpinner() {
         val countryNames = CountryCityData.countries.keys.toList()
         val countryAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, countryNames)
@@ -165,6 +178,9 @@ class ProfileActivity : BaseActivity() {
         }
     }
 
+    /**
+     * Sets up the city spinner based on the selected country.
+     */
     private fun setupCitySpinner(countryId: Int?) {
         countryId?.let {
             val cityNames = CountryCityData.cities[it] ?: emptyList()

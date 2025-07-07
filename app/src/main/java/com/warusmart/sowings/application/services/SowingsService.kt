@@ -15,6 +15,7 @@ import java.net.SocketException
 
 /**
  * Service for handling sowings-related operations and API calls.
+ * Provides methods to interact with sowings and crops via network.
  */
 class SowingsService(context: Context, private val bearerToken: String) {
 
@@ -53,7 +54,10 @@ class SowingsService(context: Context, private val bearerToken: String) {
         Log.d("SowingsService", "SowingsService initialized")
     }
 
-    // Get a crop by its ID
+    /**
+     * Gets a crop by its ID from the API.
+     * Returns a Crop object or null if not found or on error.
+     */
     suspend fun getCropById(id: Int): Crop? {
         Log.d("SowingsService", "Fetching crop with ID: $id")
         return try {
@@ -66,7 +70,10 @@ class SowingsService(context: Context, private val bearerToken: String) {
         }
     }
 
-    // Get all crops
+    /**
+     * Gets all crops from the API.
+     * Returns a list of Crop objects.
+     */
     suspend fun getAllCrops(): List<Crop> {
         Log.d("SowingsService", "Fetching all crops")
         return try {
@@ -79,7 +86,10 @@ class SowingsService(context: Context, private val bearerToken: String) {
         }
     }
 
-    // Get sowings for a specific user by user ID
+    /**
+     * Gets sowings for a specific user by user ID from the API.
+     * Returns a list of SowingDos objects.
+     */
     suspend fun getSowingsByUserId(userId: Int): List<SowingDos> {
         Log.d("SowingsService", "Fetching sowings for user ID: $userId")
         return try {
@@ -95,7 +105,9 @@ class SowingsService(context: Context, private val bearerToken: String) {
         }
     }
 
-    // Add a new sowing record
+    /**
+     * Adds a new sowing record to the API.
+     */
     suspend fun addSowingRemote(sowing: SowingDos) {
         api.addSowing(sowing)
     }

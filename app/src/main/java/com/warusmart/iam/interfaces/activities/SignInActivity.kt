@@ -19,6 +19,10 @@ import com.warusmart.iam.domain.model.SignInRequest
 import com.warusmart.iam.application.services.AuthServiceImpl
 import com.warusmart.iam.application.services.ProfileServiceImpl
 
+/**
+ * Activity for user sign in (login).
+ * Handles user authentication and navigation to profile or plans.
+ */
 class SignInActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
 
@@ -96,6 +100,9 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Navigation helpers for different activities after sign in.
+     */
     companion object {
         fun GoSignup(context: Context): Intent {
             return Intent(context, SignUpActivity::class.java)

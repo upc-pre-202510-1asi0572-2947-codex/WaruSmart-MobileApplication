@@ -18,6 +18,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 
+/**
+ * Service class for handling statistics-related operations.
+ * Provides methods to fetch and process statistics data from API and local database.
+ */
 class StatisticsService(context:Context) {
     val dotenv = dotenv() {
         directory = "/assets"
@@ -48,11 +52,8 @@ class StatisticsService(context:Context) {
 
 
     /**
-     * This method call api/v1/crops-management/sowings
-     * return an array with all the sowings and the crop referent to the cropId
-     * only use the cropId to calculate the quantity of crops
-     * and call api/v1/crops-management/crops/{cropId} to get the name of the crop
-     * This function returns a list of StatisticBar with the quantity of crops
+     * Calls the API to get all sowings and their related crops.
+     * Returns a list of StatisticBar with the quantity of crops.
      */
     suspend fun getQuantityOfCrops(): List<StatisticBar> {
         return try {
@@ -77,10 +78,8 @@ class StatisticsService(context:Context) {
     }
 
     /**
-     * This method call api/v1/crops-management/sowings/controls
-     * return an array with all the controls and the control referent to the sowingId
-     * and calculate the quantity of controls by sowingId
-     * This function returns a list of PieEntries with the quantity of controls by sowingId
+     * Calls the API to get all controls and their related sowings.
+     * Returns a list of PieEntries with the quantity of controls by sowingId.
      */
     suspend fun getQuantityOfControlsBySowingId(): List<PieEntry> {
         return try {
@@ -103,9 +102,8 @@ class StatisticsService(context:Context) {
     }
 
     /**
-     * This method call at the database SQL lite table with the name "controls"
-     * return an array with all the controls and the crop referent to the cropId
-     * with that cropID we can have the name of the crop
+     * Gets the quantity of controls by sowingId from the local database.
+     * Returns a list of PieEntries with the quantity of controls by crop name.
      */
     suspend fun getQuantityOfControlsBySowingIdByDB(): List<PieEntry> {
         return withContext(Dispatchers.IO) {
@@ -132,9 +130,8 @@ class StatisticsService(context:Context) {
     }
 
     /**
-     * This method call at the database SQL lite table with the name "sowings"
-     * return an array with all the sowings and the crop referent to the cropId
-     * with that cropID we can have the name of the crop
+     * Gets the quantity of crops from the local database.
+     * Returns a list of StatisticBar with the quantity of crops by crop name.
      */
     suspend fun getQuantityOfCropsByDB(): List<StatisticBar> {
         return withContext(Dispatchers.IO) {

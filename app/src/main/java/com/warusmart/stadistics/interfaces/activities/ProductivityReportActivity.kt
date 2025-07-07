@@ -22,6 +22,7 @@ import kotlinx.coroutines.withContext
 
 /**
  * Activity for displaying productivity reports statistics.
+ * Handles UI setup, data fetching, and navigation between statistics screens.
  */
 class ProductivityReportActivity : BaseActivity() {
 
@@ -47,7 +48,9 @@ class ProductivityReportActivity : BaseActivity() {
         setupSpinner()
     }
 
-    // Fetches productivity reports by user ID
+    /**
+     * Fetches productivity reports by user ID asynchronously and updates the UI.
+     */
     private fun fetchProductivityReportsByUserId(userId: Int){
         CoroutineScope(Dispatchers.IO).launch{
             try {
@@ -65,7 +68,9 @@ class ProductivityReportActivity : BaseActivity() {
         }
     }
 
-    // Sets up the spinner for navigation between statistics screens
+    /**
+     * Sets up the spinner for navigation between different statistics screens.
+     */
     private fun setupSpinner() {
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(

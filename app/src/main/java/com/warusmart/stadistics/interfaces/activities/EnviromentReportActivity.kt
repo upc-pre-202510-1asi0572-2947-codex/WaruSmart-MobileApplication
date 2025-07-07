@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /**
  * Activity for displaying environmental report statistics.
+ * Handles UI setup and navigation between statistics screens.
  */
 class EnviromentReportActivity : BaseActivity() {
 
@@ -32,7 +33,9 @@ class EnviromentReportActivity : BaseActivity() {
         setupSpinner()
     }
 
-    // Sets up the spinner for navigation between statistics screens
+    /**
+     * Sets up the spinner for navigation between different statistics screens.
+     */
     private fun setupSpinner(){
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(

@@ -12,6 +12,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.SocketException
 
+/**
+ * Service for handling product-related API requests and operations.
+ */
 class ProductService(context: Context) {
     private val env = EnvUtils.loadEnv(context, "env")
     private val apiUrl = env["API_URL"] ?: throw IllegalStateException("API_URL not found in env")
@@ -33,6 +36,9 @@ class ProductService(context: Context) {
 
     private val api: ProductApi = retrofit.create(ProductApi::class.java)
 
+    /**
+     * Gets all products for a specific crop.
+     */
     suspend fun getProductsByCropId(cropId: Int): List<Product> {
         return try {
             api.getProductsByCropId(cropId)
