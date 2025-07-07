@@ -31,6 +31,7 @@ import java.util.*
 
 /**
  * Activity for displaying the history of all sowings.
+ * Handles UI setup and loading of sowing records from the database and backend.
  */
 class SowingsHistoryActivity : BaseActivity() {
 

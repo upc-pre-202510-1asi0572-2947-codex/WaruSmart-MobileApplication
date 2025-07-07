@@ -27,6 +27,7 @@ import java.util.*
 
 /**
  * Activity for managing the user's sowings and crops.
+ * Handles UI setup, crop management, and sowing operations.
  */
 class SowingsManagementActivity : BaseActivity() {
 

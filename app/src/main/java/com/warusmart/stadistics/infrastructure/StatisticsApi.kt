@@ -9,23 +9,31 @@ import retrofit2.http.GET;
 import retrofit2.http.Path
 
 /**
- * API for statistics endpoints
+ * API interface for statistics endpoints.
+ * Defines network operations for retrieving sowings, controls, crops, and productivity reports.
  */
 public interface StatisticsApi {
-
-    // Get all sowings controls
+    /**
+     * Gets all sowings controls from the API.
+     */
     @GET("crops-management/sowings/controls")
     suspend fun getSowingsControls(): List<Control>
 
-    // Get the name of the crop by cropId
+    /**
+     * Gets the name of the crop by cropId from the API.
+     */
     @GET("crops-management/crops/{cropId}")
     suspend fun getCropName(@Path("cropId") cropId: Int): Crop
 
-    // Get all sowings
+    /**
+     * Gets all sowings from the API.
+     */
     @GET("crops-management/sowings")
     suspend fun getSowings(): List<Sowing>
 
-    // Get productivity reports for a user
+    /**
+     * Gets productivity reports for a user from the API.
+     */
     @GET("reports/productivity/{userId}")
     suspend fun getProductivityReports(@Path("userId") userId: Int) : List<ProductivityReport>
 }

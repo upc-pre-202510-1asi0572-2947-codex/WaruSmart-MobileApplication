@@ -13,6 +13,10 @@ import com.warusmart.iam.infrastructure.RetrofitClient
 import com.warusmart.iam.domain.model.SignUpRequest
 import com.warusmart.iam.application.services.AuthServiceImpl
 
+/**
+ * Activity for user registration (sign up).
+ * Handles user input, validation, and sign up logic.
+ */
 class SignUpActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
 
@@ -44,6 +48,9 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Navigates to the SignInActivity.
+     */
     companion object {
         fun GoSignIn(context: Context): Intent {
             return Intent(context, SignInActivity::class.java)

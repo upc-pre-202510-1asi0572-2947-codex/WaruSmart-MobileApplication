@@ -15,6 +15,7 @@ import com.warusmart.stadistics.interfaces.activities.WaterStatisticsActivity
 
 /**
  * Main entry activity for the app. Handles navigation to statistics, sowings, and sowings history.
+ * Sets up UI and button listeners for main navigation.
  */
 class MainActivity : AppCompatActivity() {
     // Activity setup and button click listeners
@@ -49,17 +50,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        // Returns intent for WaterStatisticsActivity
+        /**
+         * Returns intent for WaterStatisticsActivity.
+         */
         fun newIntent(context: Context): Intent {
             return Intent(context, WaterStatisticsActivity::class.java)
         }
 
-        // Returns intent for SowingsManagementActivity
+        /**
+         * Returns intent for SowingsManagementActivity.
+         */
         fun newIntentSowings(context: Context): Intent {
             return Intent(context, SowingsManagementActivity::class.java)
         }
 
-        // Returns intent for SowingsHistoryActivity
+        /**
+         * Returns intent for SowingsHistoryActivity.
+         */
         fun newIntentSowingsHistory(context: Context): Intent {
             return Intent(context, SowingsHistoryActivity::class.java)
         }

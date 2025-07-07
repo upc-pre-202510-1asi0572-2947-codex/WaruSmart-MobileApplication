@@ -8,6 +8,10 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+/**
+ * Data class for deserializing date strings from JSON responses.
+ * Used by Gson to convert date strings to Date objects.
+ */
 class DateDeserializer : JsonDeserializer<Date> {
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS", Locale.getDefault())
 

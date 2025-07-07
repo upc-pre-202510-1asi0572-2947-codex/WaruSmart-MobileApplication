@@ -7,7 +7,9 @@ package com.warusmart.forum.domain.model
   }
  */
 
-
+/**
+ * Model representing a question category in the forum.
+ */
 class Category(
     var categoryId: Int,
     var name: String){

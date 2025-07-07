@@ -9,6 +9,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.Date
 
+/**
+ * Singleton object for creating Retrofit API clients.
+ */
 object ApiClient {
 
     val dotenv = dotenv() {

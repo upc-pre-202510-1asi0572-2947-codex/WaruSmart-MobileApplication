@@ -21,18 +21,26 @@ import com.warusmart.sowings.domain.model.DateConverter
 @Database(entities = [Sowing::class, Control::class, Product::class], version = 5, exportSchema = false)
 @TypeConverters(DateConverter::class)
 abstract class AppDataBase : RoomDatabase() {
-    // Returns DAO for Sowing entity
+    /**
+     * Returns DAO for Sowing entity.
+     */
     abstract fun sowingDAO(): SowingDAO
-    // Returns DAO for Control entity
+    /**
+     * Returns DAO for Control entity.
+     */
     abstract fun controlDAO(): ControlDAO
-    // Returns DAO for Product entity
+    /**
+     * Returns DAO for Product entity.
+     */
     abstract fun productDAO(): ProductDAO
 
     companion object {
         @Volatile
         private var INSTANCE: AppDataBase? = null
 
-        // Returns the singleton database instance.
+        /**
+         * Returns the singleton database instance.
+         */
         fun getDatabase(context: Context): AppDataBase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(

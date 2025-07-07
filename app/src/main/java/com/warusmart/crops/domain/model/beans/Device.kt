@@ -1,5 +1,8 @@
 package com.warusmart.crops.domain.model.beans
 
+/**
+ * Class representing a device entity with its properties.
+ */
 class Device(
     val type: String,
     val title: String,

@@ -29,6 +29,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * Activity that displays the details of a question and allows viewing and adding answers.
+ * Manages the display of the question, its answers, and the dialog to add a new answer.
+ */
 class AnswersActivity : BaseActivity() {
 
     private lateinit var answersService: AnswersService
@@ -37,6 +41,9 @@ class AnswersActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        /**
+         * Initializes the view and required services for answers and profiles.
+         */
         layoutInflater.inflate(R.layout.activity_answers, findViewById(R.id.container))
         enableEdgeToEdge()
 
@@ -56,11 +63,18 @@ class AnswersActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
+        /**
+         * Marks the forum tab as selected in the bottom navigation.
+         */
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_forum
     }
 
+    /**
+     * Displays the details of the selected question.
+     */
     private fun displayQuestionDetails(question: Question, profileId: Int) {
+        // Muestra los detalles de la pregunta seleccionada
         val txtQuestionAnswers: TextView = findViewById(R.id.txtQuestionAnswers)
         val txtUserQuestion: TextView = findViewById(R.id.txtUserQuestion)
         val txtDateQuestion: TextView = findViewById(R.id.txtDateQuestion)
@@ -85,7 +99,11 @@ class AnswersActivity : BaseActivity() {
         txtDateQuestion.text = question.date.toString().take(10)
     }
 
+    /**
+     * Sets up the button to add an answer if the question is from the community.
+     */
     private fun setupAddAnswerButton(question: Question, isFromCommunity: Boolean, profileId: Int) {
+        // Configura el botón para agregar una respuesta si la pregunta es de la comunidad
         val addQuestionButton: Button = findViewById(R.id.btnAddAnswer)
 
         if (isFromCommunity) {
@@ -99,7 +117,11 @@ class AnswersActivity : BaseActivity() {
         }
     }
 
+    /**
+     * Shows a dialog to add a new answer.
+     */
     private fun showAddAnswerDialog(question: Question, profileId: Int) {
+        // Muestra un diálogo para agregar una nueva respuesta
         val dialogView = layoutInflater.inflate(R.layout.add_answer_dialog, null)
         val answerDialogTitle: TextView = dialogView.findViewById(R.id.answerDialogTitle)
         val editTextAnswer: EditText = dialogView.findViewById(R.id.editTextAnswer)
@@ -148,7 +170,11 @@ class AnswersActivity : BaseActivity() {
         dialog.show()
     }
 
+    /**
+     * Fetches and displays all answers associated with a question.
+     */
     private fun fetchAndDisplayAnswers(questionId: Int, profileId: Int) {
+        // Obtiene y muestra todas las respuestas asociadas a una pregunta
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val answers = answersService.getAllAnswersByQuestionId(questionId)
@@ -166,13 +192,21 @@ class AnswersActivity : BaseActivity() {
         }
     }
 
+    /**
+     * Displays the answers in the RecyclerView.
+     */
     private fun displayAnswers(answers: List<Answer>, profiles: List<ProfileResponse>) {
+        // Muestra las respuestas en el RecyclerView
         val recyclerView: RecyclerView = findViewById(R.id.recyclerViewAnswers)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = AdapterAnswer(answers, profiles)
     }
 
+    /**
+     * Sets up the button to return to the previous screen.
+     */
     private fun setupBackButton() {
+        // Configura el botón para regresar a la pantalla anterior
         val btnBackForum: ImageButton = findViewById(R.id.btnBackForum)
         btnBackForum.setOnClickListener {
             finish()

@@ -1,6 +1,12 @@
 package com.warusmart.iam.domain.model
 
+/**
+ * Provides static data for countries and their corresponding cities.
+ */
 object CountryCityData {
+    /**
+     * Map of country names to their unique IDs.
+     */
     val countries = mapOf(
         "USA" to 1,
         "Canada" to 2,
@@ -55,6 +61,9 @@ object CountryCityData {
 
     )
 
+    /**
+     * Map of country IDs to lists of city names.
+     */
     val cities = mapOf(
         1 to listOf("New York", "Los Angeles", "Chicago"),
         2 to listOf("Toronto", "Vancouver", "Montreal"),

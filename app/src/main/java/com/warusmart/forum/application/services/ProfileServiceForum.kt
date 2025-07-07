@@ -10,6 +10,9 @@ import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Service for handling forum user profiles, including API communication.
+ */
 class ProfileServiceForum {
     val dotenv = dotenv(){
         directory = "/assets"
@@ -37,6 +40,9 @@ class ProfileServiceForum {
         api = retrofit.create(ForumApi::class.java)
     }
 
+    /**
+     * Retrieves a user profile by its ID from the API.
+     */
     suspend fun getProfileById(profileId:Int): ProfileResponse? {
         return try {
             val profile = api.getProfileById(profileId)
@@ -48,6 +54,9 @@ class ProfileServiceForum {
         }
     }
 
+    /**
+     * Retrieves all user profiles from the API.
+     */
     suspend fun getAllProfiles():List<ProfileResponse>? {
         return try {
             val profiles = api.getAllProfiles()

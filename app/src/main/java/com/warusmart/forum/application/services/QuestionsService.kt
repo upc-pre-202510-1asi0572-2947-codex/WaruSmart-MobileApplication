@@ -13,6 +13,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.SocketException
 
+/**
+ * Service for handling forum questions, including CRUD operations and API communication.
+ */
 class QuestionsService {
     val dotenv = dotenv(){
         directory = "/assets"
@@ -40,6 +43,9 @@ class QuestionsService {
         api = retrofit.create(ForumApi::class.java)
     }
 
+    /**
+     * Retrieves all questions from the API.
+     */
     suspend fun getAllQuestions(): List<Question> {
         return try {
             val questions = api.getQuestions()
@@ -51,6 +57,9 @@ class QuestionsService {
         }
     }
 
+    /**
+     * Retrieves all questions by a specific author from the API.
+     */
     suspend fun getQuestionsByAuthorId(authorId: Int): List<Question> {
         return try {
             val questions = api.getQuestionsByAuthorId(authorId)
@@ -62,6 +71,9 @@ class QuestionsService {
         }
     }
 
+    /**
+     * Adds a new question using the API.
+     */
     suspend fun addQuestion(question: QuestionPost) {
         try {
             api.addQuestion(question)
@@ -71,6 +83,9 @@ class QuestionsService {
         }
     }
 
+    /**
+     * Updates an existing question using the API.
+     */
     suspend fun updateQuestion(questionId: Int, question: QuestionPut) {
         try {
             api.updateQuestion(questionId, question)
@@ -80,6 +95,9 @@ class QuestionsService {
         }
     }
 
+    /**
+     * Deletes a question using the API.
+     */
     suspend fun deleteQuestion(questionId: Int) {
         try {
             api.deleteQuestion(questionId)

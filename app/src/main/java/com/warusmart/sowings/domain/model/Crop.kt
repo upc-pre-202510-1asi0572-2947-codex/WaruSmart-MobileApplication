@@ -1,5 +1,9 @@
 package com.warusmart.sowings.domain.model
 
+/**
+ * Data class representing a crop entity.
+ * Used to store crop information such as id, name, image, and description.
+ */
 class Crop(
     var id: Int,
     var name: String,

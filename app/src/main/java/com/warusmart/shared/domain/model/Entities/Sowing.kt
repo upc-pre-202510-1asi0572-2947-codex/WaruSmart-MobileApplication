@@ -11,6 +11,11 @@ import java.util.Date
 /**
  * Entity representing a sowing record in the database.
  */
+
+/**
+ * Data class representing a sowing entity for the database.
+ * Stores sowing attributes such as dates, area, status, and crop information.
+ */
 @Entity(tableName = "sowing")
 data class Sowing(
     @PrimaryKey(autoGenerate = true)

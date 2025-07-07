@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 
 /**
  * Activity for displaying water usage statistics.
+ * Handles UI setup, data fetching, and navigation between statistics screens.
  */
 class WaterStatisticsActivity : BaseActivity() {
     private lateinit var statisticsService: StatisticsService
@@ -47,7 +48,9 @@ class WaterStatisticsActivity : BaseActivity() {
         fetchData()
     }
 
-    // Fetches water statistics data
+    /**
+     * Fetches water statistics data asynchronously and manages loading state.
+     */
     private fun fetchData() {
         showLoading(true)
         lifecycleScope.launch {
@@ -61,12 +64,16 @@ class WaterStatisticsActivity : BaseActivity() {
         }
     }
 
-    // Shows or hides the loading indicator
+    /**
+     * Shows or hides the loading indicator based on the loading state.
+     */
     private fun showLoading(isLoading: Boolean) {
         progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
-    // Sets up the spinner for navigation between statistics screens
+    /**
+     * Sets up the spinner for navigation between different statistics screens.
+     */
     private fun setupSpinner() {
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(

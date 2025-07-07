@@ -9,6 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.warusmart.R
 import com.google.android.material.card.MaterialCardView
 
+/**
+ * Activity for displaying and selecting subscription plans.
+ * Handles navigation to profile creation with selected plan details.
+ */
 class PlansActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {

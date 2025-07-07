@@ -10,6 +10,9 @@ import okhttp3.Request
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Service for handling forum categories, including API communication.
+ */
 class CategoriesService {
     val dotenv = dotenv(){
         directory = "/assets"
@@ -36,6 +39,9 @@ class CategoriesService {
         api = retrofit.create(ForumApi::class.java)
     }
 
+    /**
+     * Retrieves all categories from the API.
+     */
     suspend fun getAllCategories(): List<Category> {
         return try {
             val categories = api.getCategories()
@@ -47,6 +53,9 @@ class CategoriesService {
         }
     }
 
+    /**
+     * Retrieves a category by its ID from the API.
+     */
     suspend fun getCategoryById(categoryId: Int): Category {
         return try {
             val category = api.getCategoryById(categoryId)

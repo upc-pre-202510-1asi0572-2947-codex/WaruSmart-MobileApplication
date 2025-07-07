@@ -28,7 +28,9 @@ class DiseasesActivity : BaseActivity() {
     private val diseaseService = DiseaseService()
     private var diseaseList: List<Disease> = emptyList()
 
-    // Activity setup and initial data loading
+    /**
+     * Activity setup and initial data loading.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_diseases, findViewById(R.id.container))
@@ -56,7 +58,9 @@ class DiseasesActivity : BaseActivity() {
         setupSpinner()
     }
 
-    // Sets up the spinner for navigation between crop info screens
+    /**
+     * Sets up the spinner for navigation between crop info screens.
+     */
     private fun setupSpinner() {
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(
@@ -111,7 +115,9 @@ class DiseasesActivity : BaseActivity() {
         spinner.setSelection(diseasesPosition)
     }
 
-    // Fetches diseases by crop ID using the service
+    /**
+     * Fetches diseases by crop ID using the service.
+     */
     private fun fetchDiseasesByCropId(cropId: Int) {
         Log.d("DiseasesActivity", "Fetching diseases by crop ID: $cropId")
         lifecycleScope.launch {

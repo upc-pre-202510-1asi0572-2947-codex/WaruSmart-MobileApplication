@@ -11,6 +11,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.SocketException
 
+/**
+ * Service for handling device-related API requests and operations.
+ */
 class DeviceService(context: Context, private val bearerToken: String) {
 
     private val dotenv = dotenv {
@@ -42,6 +45,9 @@ class DeviceService(context: Context, private val bearerToken: String) {
         api = retrofit.create(DeviceApi::class.java)
     }
 
+    /**
+     * Gets all devices for a specific sowing.
+     */
     suspend fun getDevicesBySowingId(sowingId: Int): List<Device> {
         return try {
             api.getDevicesBySowingId(sowingId)

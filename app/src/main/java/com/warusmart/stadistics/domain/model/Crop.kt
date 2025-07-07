@@ -1,5 +1,9 @@
 package com.warusmart.stadistics.domain.model
 
+/**
+ * Data class representing a crop for statistics.
+ * Contains crop attributes such as id, name, and image URL.
+ */
 class Crop(
     var id: Int,
     var name: String,

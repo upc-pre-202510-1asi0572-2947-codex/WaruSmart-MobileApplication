@@ -16,6 +16,10 @@ import com.warusmart.R
 import com.google.android.material.card.MaterialCardView
 import java.util.regex.Pattern
 
+/**
+ * Activity for handling the payment process after selecting a subscription plan.
+ * Manages payment form validation and navigation to the profile screen.
+ */
 class PayActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -129,6 +133,9 @@ class PayActivity : AppCompatActivity() {
             }
         })
     }
+    /**
+     * Navigates to the ProfileActivity after payment.
+     */
     companion object {
         fun goProfile(context: Context): Intent {
             return Intent(context, ProfileActivity::class.java)

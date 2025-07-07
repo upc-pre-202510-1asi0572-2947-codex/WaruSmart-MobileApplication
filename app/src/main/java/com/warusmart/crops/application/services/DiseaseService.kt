@@ -47,8 +47,9 @@ class DiseaseService {
 
         api = retrofit.create(DiseaseApi::class.java)
     }
-
-    // Gets a disease by its ID
+    /**
+     * Gets all diseases for a specific crop ID.
+     */
     suspend fun getDiseaseById(id: Int): Disease? {
         return try {
             api.getDiseaseById(id)
@@ -58,7 +59,9 @@ class DiseaseService {
         }
     }
 
-    // Gets all diseases for a specific crop
+    /**
+     * Gets all diseases for a specific crop ID.
+     */
     suspend fun getDiseasesByCropId(cropId: Int): List<Disease> {
         return try {
             api.getDiseasesByCropId(cropId)

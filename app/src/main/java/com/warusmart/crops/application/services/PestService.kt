@@ -12,6 +12,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.SocketException
 
+/**
+ * Service for handling pest-related API requests and operations.
+ */
 class PestService(context: Context) {
     private val env = EnvUtils.loadEnv(context, "env")
     private val apiUrl = env["API_URL"] ?: throw IllegalStateException("API_URL not found in env")
@@ -33,6 +36,9 @@ class PestService(context: Context) {
 
     private val api: PestApi = retrofit.create(PestApi::class.java)
 
+    /**
+     * Gets all pests for a specific crop.
+     */
     suspend fun getPestsByCropId(cropId: Int): List<Pest> {
         return try {
             api.getPestsByCropId(cropId)

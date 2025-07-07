@@ -8,9 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.warusmart.R
 import com.warusmart.stadistics.domain.model.ProductivityReport
 
+/**
+ * Adapter for displaying a list of productivity reports in a RecyclerView.
+ * Handles the creation and binding of view holders for each report item.
+ */
 class ProductivityReportAdapter(
     private val reports: List<ProductivityReport>
 ) : RecyclerView.Adapter<ProductivityReportAdapter.ProductivityReportViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductivityReportViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_productivity_report, parent, false)
@@ -26,6 +31,10 @@ class ProductivityReportAdapter(
         holder.bid(report)
     }
 
+    /**
+     * ViewHolder for a productivity report item.
+     * Holds references to the views and binds data to them.
+     */
     inner class ProductivityReportViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         private val cropNameTextView: TextView = itemView.findViewById(R.id.cropName)
@@ -33,6 +42,9 @@ class ProductivityReportAdapter(
         private val areaTextView: TextView = itemView.findViewById(R.id.areaValue)
         private val productionTextView: TextView = itemView.findViewById(R.id.productionValue)
 
+        /**
+         * Binds a ProductivityReport object to the item views.
+         */
         fun bid(report: ProductivityReport){
             cropNameTextView.text = report.name
             productionTextView.text = report.production.toString()

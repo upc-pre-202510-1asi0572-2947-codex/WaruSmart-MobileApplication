@@ -1,6 +1,9 @@
 package com.warusmart.stadistics.domain.model
 
 /**
+ * Data class representing a control record for statistics.
+ * Contains control attributes such as id, sowingId, and date.
+ *
  * Example:
  *  "id": 37,
  *     "sowingId": 10,

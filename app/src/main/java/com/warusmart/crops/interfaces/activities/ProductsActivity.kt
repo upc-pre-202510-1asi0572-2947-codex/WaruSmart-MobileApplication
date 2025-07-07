@@ -35,7 +35,9 @@ class ProductsActivity : BaseActivity() {
     private lateinit var productAdapter: ProductAdapter
     private lateinit var appDB: AppDataBase
 
-    // Activity setup and initial data loading
+    /**
+     * Activity setup and initial data loading.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_products, findViewById(R.id.container))
@@ -67,7 +69,9 @@ class ProductsActivity : BaseActivity() {
         setupSpinner()
     }
 
-    // Fetches products from the database for a given sowing ID
+    /**
+     * Fetches products from the database for a given sowing ID.
+     */
     private fun fetchProductsBySowingId(sowingId: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -85,7 +89,9 @@ class ProductsActivity : BaseActivity() {
         }
     }
 
-    // Shows dialog to add a new product
+    /**
+     * Shows dialog to add a new product.
+     */
     private fun showAddProductDialog() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_product, null)
         val productNameEditText = dialogView.findViewById<EditText>(R.id.edittext_product_name)
@@ -121,8 +127,10 @@ class ProductsActivity : BaseActivity() {
         dialog.show()
     }
 
-    // Adds a new product to the database
-    private fun addProduct(sowingId: Int, productName: String, productType: String, productQuantity: Float, date: Date) {
+    /**
+     * Adds a new product to the database.
+     */
+    private fun addProduct(sowingId: Int, productName: String, productType: String, productQuantity: Float, date: java.util.Date) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val newProduct = Product(
@@ -144,7 +152,9 @@ class ProductsActivity : BaseActivity() {
         }
     }
 
-    // Handles edit action for a product
+    /**
+     * Handles edit action for a product.
+     */
     private fun onEditClick(product: Product) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_product, null)
         val productNameEditText = dialogView.findViewById<EditText>(R.id.edittext_product_name)
@@ -182,7 +192,9 @@ class ProductsActivity : BaseActivity() {
         dialog.show()
     }
 
-    // Updates a product in the database
+    /**
+     * Updates a product in the database.
+     */
     private fun updateProduct(product: Product) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -197,7 +209,9 @@ class ProductsActivity : BaseActivity() {
         }
     }
 
-    // Handles delete action for a product
+    /**
+     * Handles delete action for a product.
+     */
     private fun onDeleteClick(product: Product) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -212,7 +226,9 @@ class ProductsActivity : BaseActivity() {
         }
     }
 
-    // Sets up the spinner for navigation between crop info screens
+    /**
+     * Sets up the spinner for navigation between crop info screens.
+     */
     private fun setupSpinner() {
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(

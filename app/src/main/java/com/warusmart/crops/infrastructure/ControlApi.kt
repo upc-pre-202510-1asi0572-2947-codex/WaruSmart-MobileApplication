@@ -4,6 +4,9 @@ package com.warusmart.crops.infrastructure
 import com.warusmart.shared.domain.model.Entities.Control
 import retrofit2.http.*
 
+/**
+ * Retrofit API interface for control endpoints.
+ */
 interface ControlApi {
     @GET("crops-management/sowings/{sowingId}/controls")
     suspend fun getControlsBySowingId(@Path("sowingId") sowingId: Int): List<Control>

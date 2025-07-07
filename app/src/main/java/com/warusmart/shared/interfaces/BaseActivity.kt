@@ -21,7 +21,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  * Base activity for main screens. Handles bottom navigation and activity switching.
  */
 open class BaseActivity : AppCompatActivity() {
-    // Handles activity creation and bottom navigation setup
+    /**
+     * Handles activity creation and bottom navigation setup.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
@@ -80,14 +82,28 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     // Checks if current activity is a sowings management related activity
+    /**
+     * Checks if the current activity is SowingsManagementActivity.
+     */
     private fun isSowingsManagementActivity(): Boolean {
         return this is SowingsManagementActivity || this is ControlsActivity || this is CropCareActivity || this is DiseasesActivity || this is ProductsActivity
                 || this is GeneralCropInfo
     }
 
     // Checks if current activity is a forum related activity
+    /**
+     * Checks if the current activity is ForumManagementActivity or AnswersActivity.
+     */
     private fun isForumActivity(): Boolean {
         return this is ForumManagementActivity || this is AnswersActivity
+    }
+
+    // Checks if current activity is the profile activity
+    /**
+     * Checks if the current activity is ProfileActivity.
+     */
+    private fun isProfileActivity(): Boolean {
+        return this is ProfileActivity
     }
 
     // Handles bottom navigation item selection on resume

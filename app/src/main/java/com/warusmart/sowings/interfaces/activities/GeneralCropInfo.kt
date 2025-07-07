@@ -29,6 +29,7 @@ import java.util.*
 
 /**
  * Activity for displaying general information about a crop and its sowing.
+ * Handles UI setup and data loading for crop details.
  */
 class GeneralCropInfo : BaseActivity() {
     private lateinit var appDB: AppDataBase

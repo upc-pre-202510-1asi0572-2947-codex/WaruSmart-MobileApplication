@@ -24,14 +24,16 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /**
-* Activity for showing IOT Devices in a sowing
-*/
-
+ * Activity for showing IOT Devices in a sowing.
+ */
 class DeviceActivity : BaseActivity() {
     private lateinit var deviceRecyclerView: RecyclerView
     private lateinit var deviceService: DeviceService
     private lateinit var deviceAdapter: DeviceAdapter
 
+    /**
+     * Activity setup and initial data loading.
+     */
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_device, findViewById(R.id.container))
@@ -67,6 +69,9 @@ class DeviceActivity : BaseActivity() {
         setupSpinner()
     }
 
+    /**
+     * Fetches devices by sowing ID using the service.
+     */
     private fun fetchDevicesBySowingId(sowingId: Int){
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -84,6 +89,9 @@ class DeviceActivity : BaseActivity() {
         }
     }
 
+    /**
+     * Sets up the spinner for navigation between crop info screens.
+     */
     private fun setupSpinner() {
         val spinner: Spinner = findViewById(R.id.dropdown_menu)
         ArrayAdapter.createFromResource(

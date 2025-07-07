@@ -13,6 +13,9 @@ import com.warusmart.iam.domain.model.SessionManager
 import com.warusmart.forum.domain.model.Category
 import com.warusmart.forum.domain.model.Question
 
+/**
+ * ViewHolder to display a user's question in the forum, with actions to view, edit, and delete.
+ */
 class QuestionUserViewHolder(view: View, private val categories: List<Category>): RecyclerView.ViewHolder(view) {
 
     val questionCont = view.findViewById<TextView>(R.id.txtQuestionUser)
@@ -23,6 +26,9 @@ class QuestionUserViewHolder(view: View, private val categories: List<Category>)
     val btnDeleteQuestion = view.findViewById<ImageButton>(R.id.btnDeleteQuestion)
 
 
+    /**
+     * Renders the question and sets up action listeners for the UI.
+     */
     fun render(question: Question){
         questionCont.text = question.questionText
         date.text = question.date.toString().take(10)
