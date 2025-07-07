@@ -40,7 +40,9 @@ class SowingsHistoryActivity : BaseActivity() {
     private lateinit var sowingsService: SowingsService
     private var sowings: List<Sowing> = listOf()
 
-    // Activity setup and initial data loading
+    /**
+     * Activity setup and initial data loading.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_sowings_history, findViewById(R.id.container))
@@ -104,7 +106,9 @@ class SowingsHistoryActivity : BaseActivity() {
         }
     }
 
-    // Shows a dialog with sowing details
+    /**
+     * Shows dialog with the sowing's details.
+     */
     private fun showSowingDetailsDialog(sowing: Sowing) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_sowing_details, null)
         val txtCropName: TextView = dialogView.findViewById(R.id.txtCropName)
@@ -140,7 +144,9 @@ class SowingsHistoryActivity : BaseActivity() {
         dialog.show()
     }
 
-    // ViewHolder for sowing items
+    /**
+     * ViewHolder for displaying sowing items in the RecyclerView.
+     */
     class SowingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtCropName: TextView = itemView.findViewById(R.id.txtCropName)
         val imgCrop: ImageView = itemView.findViewById(R.id.imgCrop)

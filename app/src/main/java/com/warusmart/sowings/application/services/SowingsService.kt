@@ -58,7 +58,6 @@ class SowingsService(context: Context, private val bearerToken: String) {
      * Gets a crop by its ID from the API.
      * Returns a Crop object or null if not found or on error.
      */
-    // Get a crop by its ID
     suspend fun getCropById(id: Int): Crop? {
         Log.d("SowingsService", "Fetching crop with ID: $id")
         return try {
@@ -75,7 +74,6 @@ class SowingsService(context: Context, private val bearerToken: String) {
      * Gets all crops from the API.
      * Returns a list of Crop objects.
      */
-    // Get all crops
     suspend fun getAllCrops(): List<Crop> {
         Log.d("SowingsService", "Fetching all crops")
         return try {
@@ -92,7 +90,6 @@ class SowingsService(context: Context, private val bearerToken: String) {
      * Gets sowings for a specific user by user ID from the API.
      * Returns a list of SowingDos objects.
      */
-    // Get sowings for a specific user by user ID
     suspend fun getSowingsByUserId(userId: Int): List<SowingDos> {
         Log.d("SowingsService", "Fetching sowings for user ID: $userId")
         return try {
@@ -111,7 +108,6 @@ class SowingsService(context: Context, private val bearerToken: String) {
     /**
      * Adds a new sowing record to the API.
      */
-    // Add a new sowing record
     suspend fun addSowingRemote(sowing: SowingDos) {
         api.addSowing(sowing)
     }
