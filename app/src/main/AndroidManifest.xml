@@ -16,22 +16,22 @@
         android:theme="@style/Theme.Warusmart_appmovil_android"
         tools:targetApi="31">
         <activity
-            android:name="com.warusmart.stadistics.interfaces.ProductivityReportActivity"
+            android:name="com.warusmart.stadistics.interfaces.activities.ProductivityReportActivity"
             android:exported="false" />
         <activity
-            android:name="com.warusmart.stadistics.interfaces.EnviromentReportActivity"
+            android:name="com.warusmart.stadistics.interfaces.activities.EnviromentReportActivity"
             android:exported="false" />
         <activity
-            android:name="com.warusmart.forum.interfaces.AnswersActivity"
+            android:name="com.warusmart.forum.interfaces.activities.AnswersActivity"
             android:exported="false" />
         <activity
-            android:name="com.warusmart.forum.interfaces.ForumManagementActivity"
+            android:name="com.warusmart.forum.interfaces.activities.ForumManagementActivity"
             android:exported="false" />
         <activity
-            android:name="com.warusmart.iam.interfaces.CreateProfileActivity"
+            android:name="com.warusmart.iam.interfaces.activities.CreateProfileActivity"
             android:exported="true" />
         <activity
-            android:name="com.warusmart.iam.interfaces.SignInActivity"
+            android:name="com.warusmart.iam.interfaces.activities.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,34 +40,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.warusmart.iam.interfaces.SignUpActivity"
+            android:name="com.warusmart.iam.interfaces.activities.SignUpActivity"
             android:exported="true" />
         <activity
-            android:name="com.warusmart.iam.interfaces.PlansActivity"
+            android:name="com.warusmart.iam.interfaces.activities.PlansActivity"
             android:exported="true" />
         <activity
-            android:name="com.warusmart.iam.interfaces.PayActivity"
+            android:name="com.warusmart.iam.interfaces.activities.PayActivity"
             android:exported="true" />
         <activity
-            android:name="com.warusmart.iam.interfaces.ProfileActivity"
+            android:name="com.warusmart.iam.interfaces.activities.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name="com.warusmart.stadistics.interfaces.WaterStatisticsActivity"
+            android:name="com.warusmart.stadistics.interfaces.activities.WaterStatisticsActivity"
             android:exported="false" />
         <activity
-            android:name="com.warusmart.crops.interfaces.DeviceActivity"
+            android:name="com.warusmart.crops.interfaces.activities.DeviceActivity"
             android:exported="false" />
         <activity
             android:name="com.warusmart.MainActivity"
             android:exported="false" />
-        <activity android:name="com.warusmart.crops.interfaces.CropCareActivity" />
-        <activity android:name="com.warusmart.crops.interfaces.ControlsActivity" />
-        <activity android:name="com.warusmart.crops.interfaces.DiseasesActivity" />
-        <activity android:name="com.warusmart.crops.interfaces.ProductsActivity" />
-        <activity android:name="com.warusmart.sowings.interfaces.GeneralCropInfo" />
-        <activity android:name="com.warusmart.sowings.interfaces.SowingsHistoryActivity" />
+        <activity android:name="com.warusmart.crops.interfaces.activities.CropCareActivity" />
+        <activity android:name="com.warusmart.crops.interfaces.activities.ControlsActivity" />
+        <activity android:name="com.warusmart.crops.interfaces.activities.DiseasesActivity" />
+        <activity android:name="com.warusmart.crops.interfaces.activities.ProductsActivity" />
+        <activity android:name="com.warusmart.sowings.interfaces.activities.GeneralCropInfo" />
+        <activity android:name="com.warusmart.sowings.interfaces.activities.SowingsHistoryActivity" />
         <activity
-            android:name="com.warusmart.sowings.interfaces.SowingsManagementActivity"
+            android:name="com.warusmart.sowings.interfaces.activities.SowingsManagementActivity"
             android:exported="true" />
     </application>
 

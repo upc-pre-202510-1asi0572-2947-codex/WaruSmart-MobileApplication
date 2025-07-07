@@ -1,20 +1,28 @@
 // ApiClient.kt
 package com.warusmart.crops.infrastructure
 
-import CustomDateTypeAdapter
+import com.warusmart.crops.interfaces.adapters.CustomDateTypeAdapter
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import io.github.cdimascio.dotenv.dotenv
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.Date
 
 object ApiClient {
+
+    val dotenv = dotenv() {
+        directory = "/assets"
+        filename = "env"
+    }
+    private val BASE_URL = dotenv["API_URL"]
+
     private val gson: Gson = GsonBuilder()
         .registerTypeAdapter(Date::class.java, CustomDateTypeAdapter())
         .create()
 
     private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://your.api.url/")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
 

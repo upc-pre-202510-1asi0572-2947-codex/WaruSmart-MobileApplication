@@ -3,15 +3,23 @@ package com.warusmart.crops.application.services
 
 import com.warusmart.shared.domain.model.Entities.Control
 import com.warusmart.crops.infrastructure.ControlApi
+import com.warusmart.iam.infrastructure.RetrofitClient
+import io.github.cdimascio.dotenv.dotenv
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ControlService {
     private val api: ControlApi
 
+    val dotenv = dotenv() {
+        directory = "/assets"
+        filename = "env"
+    }
+    private val BASE_URL = RetrofitClient.dotenv["API_URL"]
+
     init {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://your-api-base-url.com")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

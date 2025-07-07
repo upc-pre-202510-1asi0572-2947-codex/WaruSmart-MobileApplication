@@ -3,18 +3,18 @@ package com.warusmart.shared.interfaces
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.warusmart.crops.interfaces.ControlsActivity
-import com.warusmart.crops.interfaces.CropCareActivity
-import com.warusmart.crops.interfaces.DiseasesActivity
-import com.warusmart.sowings.interfaces.GeneralCropInfo
-import com.warusmart.crops.interfaces.ProductsActivity
+import com.warusmart.crops.interfaces.activities.ControlsActivity
+import com.warusmart.crops.interfaces.activities.CropCareActivity
+import com.warusmart.crops.interfaces.activities.DiseasesActivity
+import com.warusmart.sowings.interfaces.activities.GeneralCropInfo
+import com.warusmart.crops.interfaces.activities.ProductsActivity
 import com.warusmart.R
-import com.warusmart.sowings.interfaces.SowingsHistoryActivity
-import com.warusmart.forum.interfaces.AnswersActivity
-import com.warusmart.forum.interfaces.ForumManagementActivity
-import com.warusmart.iam.interfaces.ProfileActivity
-import com.warusmart.sowings.interfaces.SowingsManagementActivity
-import com.warusmart.stadistics.interfaces.WaterStatisticsActivity
+import com.warusmart.sowings.interfaces.activities.SowingsHistoryActivity
+import com.warusmart.forum.interfaces.activities.AnswersActivity
+import com.warusmart.forum.interfaces.activities.ForumManagementActivity
+import com.warusmart.iam.interfaces.activities.ProfileActivity
+import com.warusmart.sowings.interfaces.activities.SowingsManagementActivity
+import com.warusmart.stadistics.interfaces.activities.WaterStatisticsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 /**

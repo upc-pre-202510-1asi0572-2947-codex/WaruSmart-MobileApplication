@@ -2,9 +2,11 @@ package com.warusmart.sowings.application.services
 
 import android.content.Context
 import android.util.Log
+import com.warusmart.iam.infrastructure.RetrofitClient
 import com.warusmart.sowings.domain.model.Crop
 import com.warusmart.sowings.domain.model.SowingDos
 import com.warusmart.sowings.infrastructure.SowingsApi
+import io.github.cdimascio.dotenv.dotenv
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
@@ -18,7 +20,16 @@ class SowingsService(context: Context, private val bearerToken: String) {
 
     private val api: SowingsApi
 
+    /**
+     * Initialisace the retrofit client
+     */
     init {
+        val dotenv = dotenv() {
+            directory = "/assets"
+            filename = "env"
+        }
+        val BASE_URL = RetrofitClient.dotenv["API_URL"]
+
         Log.d("SowingsService", "Initializing SowingsService")
         if (bearerToken.isEmpty()) {
             throw IllegalArgumentException("Bearer token is missing or empty")
@@ -33,7 +44,7 @@ class SowingsService(context: Context, private val bearerToken: String) {
         }.build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://waru-smart-fzg6c7htcadxb9g5.canadacentral-01.azurewebsites.net/api/v1/")
+            .baseUrl(BASE_URL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
