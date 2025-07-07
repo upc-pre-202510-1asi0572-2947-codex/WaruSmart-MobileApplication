@@ -1,7 +1,7 @@
 // ApiClient.kt
 package com.warusmart.crops.infrastructure
 
-import CustomDateTypeAdapter
+import com.warusmart.crops.interfaces.adapters.CustomDateTypeAdapter
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import io.github.cdimascio.dotenv.dotenv
