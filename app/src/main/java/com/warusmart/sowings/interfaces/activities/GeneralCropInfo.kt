@@ -20,7 +20,6 @@ import com.warusmart.shared.application.DB.AppDataBase
 import android.widget.Toast
 import com.warusmart.R
 import com.warusmart.iam.domain.model.SessionManager
-import com.warusmart.crops.interfaces.activities.DeviceActivity
 import com.warusmart.iam.interfaces.activities.SignInActivity
 import com.warusmart.shared.interfaces.BaseActivity
 import com.warusmart.sowings.application.services.SowingsService
@@ -129,6 +128,7 @@ class GeneralCropInfo : BaseActivity() {
                     when (position) {
                         0 -> startActivity(Intent(this@GeneralCropInfo, GeneralCropInfo::class.java).apply {
                             putExtra("SOWING_ID", sowingId)
+                            putExtra("CROP_ID", cropId)
                         })
                         1 -> startActivity(Intent(this@GeneralCropInfo, DeviceActivity::class.java).apply {
                             putExtra("SOWING_ID", sowingId)

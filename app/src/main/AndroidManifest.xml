@@ -55,7 +55,7 @@
             android:name="com.warusmart.stadistics.interfaces.activities.WaterStatisticsActivity"
             android:exported="false" />
         <activity
-            android:name="com.warusmart.crops.interfaces.activities.DeviceActivity"
+            android:name="com.warusmart.sowings.interfaces.activities.DeviceActivity"
             android:exported="false" />
         <activity
             android:name="com.warusmart.MainActivity"

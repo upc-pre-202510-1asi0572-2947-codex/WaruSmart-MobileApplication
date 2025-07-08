@@ -21,6 +21,7 @@ import com.warusmart.sowings.interfaces.activities.GeneralCropInfo
 import com.warusmart.R
 import com.warusmart.shared.interfaces.BaseActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.warusmart.sowings.interfaces.activities.DeviceActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

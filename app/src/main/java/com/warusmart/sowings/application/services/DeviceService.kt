@@ -1,9 +1,9 @@
-package com.warusmart.crops.application.services
+package com.warusmart.sowings.application.services
 
 import android.content.Context
 import android.util.Log
-import com.warusmart.crops.domain.model.beans.Device
-import com.warusmart.crops.infrastructure.DeviceApi
+import com.warusmart.sowings.domain.model.Device
+import com.warusmart.sowings.infrastructure.DeviceApi
 import io.github.cdimascio.dotenv.dotenv
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -49,6 +49,7 @@ class DeviceService(context: Context, private val bearerToken: String) {
      * Gets all devices for a specific sowing.
      */
     suspend fun getDevicesBySowingId(sowingId: Int): List<Device> {
+        Log.d("DeviceService", "Fetching devices for sowingId: $sowingId")
         return try {
             api.getDevicesBySowingId(sowingId)
         } catch (e: SocketException) {

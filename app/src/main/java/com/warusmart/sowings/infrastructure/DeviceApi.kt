@@ -1,6 +1,6 @@
-package com.warusmart.crops.infrastructure
+package com.warusmart.sowings.infrastructure
 
-import com.warusmart.crops.domain.model.beans.Device
+import com.warusmart.sowings.domain.model.Device
 import retrofit2.http.GET
 import retrofit2.http.Path
 

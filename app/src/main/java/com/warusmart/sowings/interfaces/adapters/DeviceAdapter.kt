@@ -1,4 +1,4 @@
-package com.warusmart.crops.interfaces.adapters
+package com.warusmart.sowings.interfaces.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.warusmart.R
-import com.warusmart.crops.domain.model.beans.Device
+import com.warusmart.sowings.domain.model.Device
 
 /**
  * RecyclerView Adapter for displaying devices in a list.
@@ -38,26 +38,44 @@ class DeviceAdapter(
         holder.bid(device)
     }
 
+    /**
+     * ViewHolder class for device items.
+     */
     inner class DeviceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val deviceNameTextView: TextView = itemView.findViewById(R.id.deviceNameTextView)
         private val deviceTypeTextView: TextView = itemView.findViewById(R.id.deviceTypeTextView)
-        private val deviceStatusTextView: TextView = itemView.findViewById(R.id.deviceStatusTextView)
         private val deviceLastSyncTextView: TextView = itemView.findViewById(R.id.decieLastSyncTextView)
         private val deviceLocationTextView: TextView = itemView.findViewById(R.id.deviceLocationTextView)
+        private val deviceHumidityTextView: TextView = itemView.findViewById(R.id.deviceHumidityTextView)
+        private val deviceTemperatureTextView: TextView = itemView.findViewById(R.id.deviceTemperatureTextView)
+        private val deviceSoilMoistureTextView: TextView = itemView.findViewById(R.id.deviceSoilMoistureTextView)
 
         /**
          * Binds the device data to the UI elements.
          */
         fun bid(device: Device){
-            deviceNameTextView.text = device.title
-            deviceTypeTextView.text = "Sensor Type: ${device.type}"
-            deviceStatusTextView.text = "Status ${when (device.status) {
+
+            val name = device.name.ifEmpty { "Unknown Device" }
+            val id = device.deviceId.ifEmpty { "Unknown ID" }
+            val type = device.deviceType.ifEmpty { "Unknown Type" }
+            val lastSync = device.lastSyncDate.ifEmpty { "Never" }
+            val location = device.location.ifEmpty { "Unknown Location" }
+            val humidity = device.humidity.takeIf { it >= 0 }?.toString() ?: "N/A"
+            val temperature = device.temperature.takeIf { it >= 0 }?.toString() ?: "N/A"
+            val soilMoisture = device.soilMoisture.takeIf { it >= 0 }?.toString() ?: "N/A"
+
+            deviceNameTextView.text = name + id
+            deviceTypeTextView.text = "Sensor Type: ${type}"
+            /*deviceStatusTextView.text = "Status ${when (device.status) {
                 0 -> "Inactive"
                 1 -> "Active"
                 else -> "Unknown"
-            }}"
-            deviceLastSyncTextView.text = "Last Sync: ${device.additionalProp1}"
-            deviceLocationTextView.text = "Location: ${device.additionalProp2}"
+            }}"*/
+            deviceLastSyncTextView.text = "Last Sync: ${lastSync}"
+            deviceLocationTextView.text = "Location: ${location}"
+            deviceHumidityTextView.text = "Humidity: ${humidity}"
+            deviceTemperatureTextView.text = "Temperature: ${temperature}"
+            deviceSoilMoistureTextView.text = "Soil Moisture: ${soilMoisture}"
         }
     }
 }
