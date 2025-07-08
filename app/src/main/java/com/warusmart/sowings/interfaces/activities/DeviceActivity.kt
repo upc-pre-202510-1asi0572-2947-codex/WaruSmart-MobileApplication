@@ -42,8 +42,8 @@ class DeviceActivity : BaseActivity() {
         enableEdgeToEdge()
 
         // Configurar el BottomNavigationView
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.selectedItemId = R.id.navigation_home
+        //val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        //bottomNavigationView.selectedItemId = R.id.navigation_home
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -66,7 +66,7 @@ class DeviceActivity : BaseActivity() {
 
         val sowingId = intent.getIntExtra("SOWING_ID", 1)
         Log.d("DevicesActivity", "Received sowingId: $sowingId")
-        deviceAdapter = DeviceAdapter(emptyList())
+        deviceAdapter = DeviceAdapter(emptyList(), deviceService)
         deviceRecyclerView.adapter = deviceAdapter
 
         if (sowingId != -1) {
@@ -89,13 +89,13 @@ class DeviceActivity : BaseActivity() {
                 val devices = deviceService.getDevicesBySowingId(sowingId)
                 Log.d("DeviceActivity", "Fetched devices: ${devices.size} devices found")
                 withContext(Dispatchers.Main){
-                    deviceAdapter = DeviceAdapter(devices)
+                    deviceAdapter = DeviceAdapter(devices, deviceService)
                     deviceRecyclerView.adapter = deviceAdapter
                 }
             } catch (e: Exception){
                 Log.e("DeviceAcivity", "Error fetching devices: ${e.message}")
                 withContext(Dispatchers.Main){
-                    deviceAdapter = DeviceAdapter(emptyList())
+                    deviceAdapter = DeviceAdapter(emptyList(), deviceService)
                     deviceRecyclerView.adapter = deviceAdapter
                 }
                 withContext(Dispatchers.Main) {

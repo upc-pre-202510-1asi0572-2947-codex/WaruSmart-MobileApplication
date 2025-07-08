@@ -1,18 +1,26 @@
 package com.warusmart.sowings.interfaces.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.warusmart.R
+import com.warusmart.sowings.application.services.DeviceService
 import com.warusmart.sowings.domain.model.Device
+import com.warusmart.sowings.domain.model.UpdateActuatorRequest
+import com.warusmart.sowings.domain.model.UpdatedActuator
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * RecyclerView Adapter for displaying devices in a list.
  */
 class DeviceAdapter(
     private val devices: List<Device>,
+    private val service: DeviceService
 ) : RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder>() {
 
     /**
@@ -49,6 +57,8 @@ class DeviceAdapter(
         private val deviceHumidityTextView: TextView = itemView.findViewById(R.id.deviceHumidityTextView)
         private val deviceTemperatureTextView: TextView = itemView.findViewById(R.id.deviceTemperatureTextView)
         private val deviceSoilMoistureTextView: TextView = itemView.findViewById(R.id.deviceSoilMoistureTextView)
+        private val buttonActivate:Button = itemView.findViewById(R.id.button_activate_actuator)
+        private val buttonDeactivate:Button = itemView.findViewById(R.id.button_deactivate_actuator)
 
         /**
          * Binds the device data to the UI elements.
@@ -57,6 +67,7 @@ class DeviceAdapter(
 
             val name = device.name.ifEmpty { "Unknown Device" }
             val id = device.deviceId.ifEmpty { "Unknown ID" }
+            val sowingId = device.sowingId.takeIf { it < 0 }?.toString() ?: "Unknown Sowing ID"
             val type = device.deviceType.ifEmpty { "Unknown Type" }
             val lastSync = device.lastSyncDate.ifEmpty { "Never" }
             val location = device.location.ifEmpty { "Unknown Location" }
@@ -76,6 +87,22 @@ class DeviceAdapter(
             deviceHumidityTextView.text = "Humidity: ${humidity}"
             deviceTemperatureTextView.text = "Temperature: ${temperature}"
             deviceSoilMoistureTextView.text = "Soil Moisture: ${soilMoisture}"
+
+            buttonActivate.setOnClickListener(){
+                val data = UpdateActuatorRequest("Actice")
+                GlobalScope.launch {
+                    val result:UpdatedActuator = service.updateActuatorState(device.sowingId, device.id, data)
+                    Log.d("DeviceAdapter", "Actuator activated: ${result.toString()}")
+                }
+            }
+
+            buttonDeactivate.setOnClickListener(){
+                val data = UpdateActuatorRequest("Disactivate")
+                GlobalScope.launch {
+                    val result:UpdatedActuator = service.updateActuatorState(device.sowingId, device.id, data)
+                    Log.d("DeviceAdapter", "Actuator deactivated: ${result.toString()}")
+                }
+            }
         }
     }
 }
