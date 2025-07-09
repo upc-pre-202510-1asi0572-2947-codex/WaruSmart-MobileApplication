@@ -109,9 +109,3 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
-
-/*firebaseAppDistribution{
-    appId = "1:598322123109:android:f40d82f76ae03ab2c7118c"
-    releaseNotes = "Test version"
-    testers = "christopmore28@gmail.com"
-}*/

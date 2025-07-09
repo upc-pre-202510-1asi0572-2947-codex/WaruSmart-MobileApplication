@@ -19,6 +19,7 @@ import com.warusmart.crops.interfaces.adapters.CropCareAdapter
 import com.warusmart.crops.domain.model.beans.Cares
 import com.warusmart.shared.interfaces.BaseActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.warusmart.sowings.interfaces.activities.DeviceActivity
 import kotlinx.coroutines.launch
 
 /**

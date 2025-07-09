@@ -105,10 +105,27 @@ class SowingsService(context: Context, private val bearerToken: String) {
         }
     }
 
+
+
     /**
      * Adds a new sowing record to the API.
      */
     suspend fun addSowingRemote(sowing: SowingDos) {
         api.addSowing(sowing)
+    }
+
+    suspend fun getSowingById(id: Int): SowingDos? {
+        Log.d("SowingsService", "Fetching sowing with ID: $id")
+        return try {
+            val sowing = api.getSowingById(id)
+            Log.d("SowingsService", "Raw JSON response: $sowing")
+            sowing
+        } catch (e: SocketException) {
+            Log.e("SowingsService", "SocketException: ${e.message}")
+            null
+        } catch (e: Exception) {
+            Log.e("SowingsService", "Error fetching sowing: ${e.message}")
+            null
+        }
     }
 }

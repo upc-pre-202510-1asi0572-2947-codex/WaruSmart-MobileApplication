@@ -1,9 +1,11 @@
-package com.warusmart.crops.application.services
+package com.warusmart.sowings.application.services
 
 import android.content.Context
 import android.util.Log
-import com.warusmart.crops.domain.model.beans.Device
-import com.warusmart.crops.infrastructure.DeviceApi
+import com.warusmart.sowings.domain.model.Device
+import com.warusmart.sowings.domain.model.UpdateActuatorRequest
+import com.warusmart.sowings.domain.model.UpdatedActuator
+import com.warusmart.sowings.infrastructure.DeviceApi
 import io.github.cdimascio.dotenv.dotenv
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -49,6 +51,7 @@ class DeviceService(context: Context, private val bearerToken: String) {
      * Gets all devices for a specific sowing.
      */
     suspend fun getDevicesBySowingId(sowingId: Int): List<Device> {
+        Log.d("DeviceService", "Fetching devices for sowingId: $sowingId")
         return try {
             api.getDevicesBySowingId(sowingId)
         } catch (e: SocketException) {
@@ -57,6 +60,19 @@ class DeviceService(context: Context, private val bearerToken: String) {
         } catch (e: Exception) {
             Log.e("DeviceService", "Error fetching devices: ${e.message}")
             emptyList()
+        }
+    }
+
+    suspend fun updateActuatorState(sowingId: Int, deviceId: Int, data: UpdateActuatorRequest): UpdatedActuator {
+        Log.d("DeviceService", "Updating actuator state for sowingId: $sowingId, deviceId: $deviceId")
+        return try {
+            api.updateActuatorState(sowingId, deviceId, data)
+        } catch (e: SocketException) {
+            Log.e("DeviceService", "SocketException: ${e.message}")
+            throw e
+        } catch (e: Exception) {
+            Log.e("DeviceService", "Error updating actuator state: ${e.message}")
+            throw e
         }
     }
 }

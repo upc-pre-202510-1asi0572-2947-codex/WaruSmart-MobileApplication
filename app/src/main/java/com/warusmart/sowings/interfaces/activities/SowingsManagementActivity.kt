@@ -111,38 +111,6 @@ class SowingsManagementActivity : BaseActivity() {
             val txtStartDate = cardView.findViewById<TextView>(R.id.txtStartDate)
             val txtEndDate = cardView.findViewById<TextView>(R.id.txtEndDate)
             val txtArea = cardView.findViewById<TextView>(R.id.txtArea)
-
-            val crop = cropMap[sowing.cropId]
-            if (crop != null) {
-                Glide.with(this).load(crop.imageUrl).into(imgCrop)
-                txtCropName.text = crop.name
-            } else {
-                imgCrop.setImageResource(R.drawable.ic_launcher_background)
-                txtCropName.text = "Unknown"
-            }
-
-            txtPhenologicalPhaseName.text = sowing.phenologicalPhaseName ?: "Sincronizado"
-            txtStartDate.text = sowing.startDate?.substring(0, 10) ?: "-"
-            txtEndDate.text = sowing.endDate?.substring(0, 10) ?: "-"
-            txtArea.text = "${sowing.areaLand} m²"
-
-            sowingsContainer.addView(cardView)
-        }
-    }
-
-    // Displays sowings using Sowing model
-    private fun displaySowings(sowings: List<Sowing>, cropMap: Map<Int, Crop>) {
-        sowingsContainer.removeAllViews()
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        sowings.forEach { sowing ->
-            val cardView = LayoutInflater.from(this).inflate(R.layout.item_sowing, sowingsContainer, false)
-
-            val imgCrop = cardView.findViewById<ImageView>(R.id.imgCrop)
-            val txtCropName = cardView.findViewById<TextView>(R.id.txtCropName)
-            val txtPhenologicalPhaseName = cardView.findViewById<TextView>(R.id.txtPhenologicalPhaseName)
-            val txtStartDate = cardView.findViewById<TextView>(R.id.txtStartDate)
-            val txtEndDate = cardView.findViewById<TextView>(R.id.txtEndDate)
-            val txtArea = cardView.findViewById<TextView>(R.id.txtArea)
             val imgTrashIcon = cardView.findViewById<ImageView>(R.id.imgTrashIcon)
             val imgViewIcon = cardView.findViewById<ImageView>(R.id.imgViewIcon)
             val imgEditIcon = cardView.findViewById<ImageView>(R.id.imgEditIcon)
@@ -157,9 +125,9 @@ class SowingsManagementActivity : BaseActivity() {
                 txtCropName.text = "Unknown"
             }
 
-            txtPhenologicalPhaseName.text = sowing.phenologicalPhaseName
-            txtStartDate.text = dateFormat.format(sowing.startDate)
-            txtEndDate.text = dateFormat.format(sowing.endDate)
+            txtPhenologicalPhaseName.text = sowing.phenologicalPhaseName ?: "Sincronizado"
+            txtStartDate.text = sowing.startDate?.substring(0, 10) ?: "-"
+            txtEndDate.text = sowing.endDate?.substring(0, 10) ?: "-"
             txtArea.text = "${sowing.areaLand} m²"
 
             imgViewIcon.setOnClickListener {
@@ -176,7 +144,7 @@ class SowingsManagementActivity : BaseActivity() {
             }
 
             imgTrashIcon.setOnClickListener {
-                showDeleteSowingDialog(sowing.id)
+                showDeleteSowingDialog(sowing.id!!)
             }
 
             imgEditIcon.setOnClickListener {
@@ -184,7 +152,7 @@ class SowingsManagementActivity : BaseActivity() {
             }
 
             imgPhaseIcon.setOnClickListener {
-                showUpdatePhenologicalPhaseDialog(sowing.id)
+                showUpdatePhenologicalPhaseDialog(sowing.id!!)
             }
 
             sowingsContainer.addView(cardView)
@@ -230,6 +198,8 @@ class SowingsManagementActivity : BaseActivity() {
 
     // Shows dialog to confirm sowing deletion
     private fun showDeleteSowingDialog(sowingId: Int) {
+
+        Log.d("SowingsManagement", "Showing delete dialog for sowing ID: $sowingId")
         val dialogView = layoutInflater.inflate(R.layout.dialog_delete_sowing, null)
         val yesButton: Button = dialogView.findViewById(R.id.button_yes)
         val noButton: Button = dialogView.findViewById(R.id.button_no)
@@ -251,7 +221,9 @@ class SowingsManagementActivity : BaseActivity() {
     }
 
     // Shows dialog to update a sowing
-    private fun showUpdateSowingDialog(sowing: Sowing) {
+    private fun showUpdateSowingDialog(sowing: SowingDos) {
+
+        Log.d("SowingsManagement", "Showing update dialog for sowing ID: ${sowing.id}")
         val dialogView = layoutInflater.inflate(R.layout.dialog_update_sowing, null)
         val cropSpinner: Spinner = dialogView.findViewById(R.id.spinner_crop_names)
         val areaEditText: EditText = dialogView.findViewById(R.id.edittext_area)
@@ -269,7 +241,9 @@ class SowingsManagementActivity : BaseActivity() {
         areaEditText.setText(sowing.areaLand.toString())
 
         val calendar = Calendar.getInstance().apply {
-            time = sowing.startDate
+            time = sowing.startDate.let {
+                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()).parse(it)
+            }
         }
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         startDateButton.text = dateFormat.format(calendar.time)
@@ -305,8 +279,8 @@ class SowingsManagementActivity : BaseActivity() {
                 val updatedSowing = sowing.copy(
                     cropId = selectedCrop.id,
                     areaLand = area,
-                    startDate = startDate,
-                    endDate = endDate
+                    startDate = startDate.toString(),
+                    endDate = endDate.toString()
                 )
                 updateSowing(updatedSowing)
                 dialog.dismiss()
@@ -375,7 +349,7 @@ class SowingsManagementActivity : BaseActivity() {
     private fun deleteSowing(sowingId: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                appDB.sowingDAO().deleteSowingById(sowingId)
+                //appDB.sowingDAO().deleteSowingById(sowingId)
                 fetchAndDisplaySowings()
             } catch (e: Exception) {
                 Log.e("SowingsManagement", "Error deleting sowing: ${e.message}")
@@ -384,10 +358,10 @@ class SowingsManagementActivity : BaseActivity() {
     }
 
     // Updates a sowing in the database
-    private fun updateSowing(sowing: Sowing) {
+    private fun updateSowing(sowing: SowingDos) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                appDB.sowingDAO().updateSowing(sowing)
+                //appDB.sowingDAO().updateSowing(sowing)
                 fetchAndDisplaySowings()
             } catch (e: Exception) {
                 Log.e("SowingsManagement", "Error updating sowing: ${e.message}")
