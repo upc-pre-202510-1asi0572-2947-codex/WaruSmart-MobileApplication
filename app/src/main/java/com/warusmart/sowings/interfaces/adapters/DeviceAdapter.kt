@@ -12,8 +12,11 @@ import com.warusmart.sowings.application.services.DeviceService
 import com.warusmart.sowings.domain.model.Device
 import com.warusmart.sowings.domain.model.UpdateActuatorRequest
 import com.warusmart.sowings.domain.model.UpdatedActuator
+import java.text.SimpleDateFormat
+import java.util.Locale
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+
 
 /**
  * RecyclerView Adapter for displaying devices in a list.
@@ -44,6 +47,17 @@ class DeviceAdapter(
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
         val device = devices[position]
         holder.bid(device)
+    }
+
+    private fun formatLastSyncDate(dateString: String): String {
+        return try {
+            val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH)
+            val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH)
+            val date = parser.parse(dateString)
+            if (date != null) formatter.format(date) else "Never"
+        } catch (e: Exception) {
+            "Never"
+        }
     }
 
     /**
@@ -82,7 +96,7 @@ class DeviceAdapter(
                 1 -> "Active"
                 else -> "Unknown"
             }}"*/
-            deviceLastSyncTextView.text = "Last Sync: ${lastSync}"
+            deviceLastSyncTextView.text = "Last Sync: ${formatLastSyncDate(lastSync)}"
             deviceLocationTextView.text = "Location: ${location}"
             deviceHumidityTextView.text = "Humidity: ${humidity}"
             deviceTemperatureTextView.text = "Temperature: ${temperature}"
