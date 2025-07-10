@@ -87,7 +87,7 @@ class CreateProfileActivity : AppCompatActivity() {
                 }
 
                 if (token != null && userId != null) {
-                    val profileRequest = ProfileRequest(firtName, lastName, email.toString(), subscriptionId, countryId, cityId, userId, selectedRole)
+                    val profileRequest = ProfileRequest(firtName, lastName, email.toString(), cityId, subscriptionId, countryId, userId, selectedRole)
                     profileServiceImpl.saveProfile(token, profileRequest) { profileResponse ->
                         if (profileResponse != null) {
                             Toast.makeText(this, "Profile saved successfully", Toast.LENGTH_LONG).show()
