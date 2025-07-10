@@ -16,6 +16,7 @@ import com.warusmart.iam.interfaces.activities.ProfileActivity
 import com.warusmart.sowings.interfaces.activities.SowingsManagementActivity
 import com.warusmart.stadistics.interfaces.activities.WaterStatisticsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.warusmart.stadistics.interfaces.activities.StadisticsActivity
 
 /**
  * Base activity for main screens. Handles bottom navigation and activity switching.
@@ -68,8 +69,8 @@ open class BaseActivity : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_statistics -> {
-                    if (this !is WaterStatisticsActivity) {
-                        val intent = Intent(this, WaterStatisticsActivity::class.java)
+                    if (this !is StadisticsActivity) {
+                        val intent = Intent(this, StadisticsActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
                         startActivity(intent)
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
@@ -115,7 +116,7 @@ open class BaseActivity : AppCompatActivity() {
                 R.id.navigation_home
             is SowingsHistoryActivity -> bottomNavigationView.selectedItemId =
                 R.id.navigation_history
-            is WaterStatisticsActivity -> bottomNavigationView.selectedItemId =
+            is StadisticsActivity -> bottomNavigationView.selectedItemId =
                 R.id.navigation_statistics
             is ProfileActivity -> bottomNavigationView.selectedItemId = R.id.navigation_profile
             is ForumManagementActivity -> bottomNavigationView.selectedItemId =
