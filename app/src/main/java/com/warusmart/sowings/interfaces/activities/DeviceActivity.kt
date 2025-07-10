@@ -41,9 +41,9 @@ class DeviceActivity : BaseActivity() {
         layoutInflater.inflate(R.layout.activity_device, findViewById(R.id.container))
         enableEdgeToEdge()
 
-        // Configurar el BottomNavigationView
-        //val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        //bottomNavigationView.selectedItemId = R.id.navigation_home
+        // Setup the BottomNavigationView
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.navigation_home
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

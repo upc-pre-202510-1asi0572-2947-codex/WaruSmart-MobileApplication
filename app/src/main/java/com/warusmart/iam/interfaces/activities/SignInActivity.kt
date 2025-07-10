@@ -48,7 +48,6 @@ class SignInActivity : AppCompatActivity() {
             val password = findViewById<EditText>(R.id.edtPassword).text.toString()
             if (username.isNotEmpty() && password.isNotEmpty()) {
                 val signInRequest = SignInRequest(username, password)
-                val url = "https://localhost:7071/api/v1/authentication/sign-in"
 
                 authServiceImpl.signIn(signInRequest) { signInResponse ->
                     if (signInResponse != null) {
@@ -64,24 +63,8 @@ class SignInActivity : AppCompatActivity() {
                                 startActivity(GoProfile(this))
                             } else {
                                 Log.d("SignInActivity", "Profile not found, going to plans")
-
-
-
-
-
-
-                                //Section added for DEBUG purposes, remove when profile camn be created
                                 SessionManager.profileId = signInResponse.id
-                                //startActivity(GoProfile(this))
                                 startActivity(GoPlans(this))
-
-
-
-
-
-
-
-
                             }
                         }
                     } else {
