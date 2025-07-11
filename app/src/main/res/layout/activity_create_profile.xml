@@ -7,7 +7,7 @@
     android:id="@+id/rlCreateProfile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".iam.interfaces.SignUpActivity"
+    tools:context="com.warusmart.iam.interfaces.activities.SignUpActivity"
     android:background="#D9D9D9">
 
     <ImageView
@@ -32,15 +32,6 @@
             android:text="SignUp"
             android:textColor="#000000"
             android:textSize="25dp" />
-
-        <EditText
-            android:id="@+id/edtId"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/login_edit_text_background"
-            android:hint="User id"/>
 
         <EditText
             android:id="@+id/edtName"
@@ -70,6 +61,14 @@
 
         <Spinner
             android:id="@+id/spinnerCity"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/login_edit_text_background" />
+
+        <Spinner
+            android:id="@+id/spinnerRole"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

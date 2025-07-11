@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.waruSmart_appmovil_android"
+    namespace = "com.warusmart"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.waruSmart_appmovil_android"
+        applicationId = "com.warusmart"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
@@ -56,6 +56,7 @@ android {
 }
 
 dependencies {
+
     // Retrofit dependencies
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -74,6 +75,9 @@ dependencies {
 
     // Navigation dependencies
     // implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    //Stadisctics graphics dependences
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
     implementation(libs.car.ui.lib)
     val room_version = "2.5.0"
@@ -109,9 +113,3 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
-
-/*firebaseAppDistribution{
-    appId = "1:598322123109:android:f40d82f76ae03ab2c7118c"
-    releaseNotes = "Test version"
-    testers = "christopmore28@gmail.com"
-}*/

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.warusmart.stadistics.interfaces.activities.StadisticsActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/main">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            style="@style/TitleTextStyle"
+            android:text="@string/title_statical_reports"/>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/stadisticsChartTemperature"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/stadisticsChartHumidity"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/stadisticsChartSoilMosture"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+    </LinearLayout>
+</ScrollView>

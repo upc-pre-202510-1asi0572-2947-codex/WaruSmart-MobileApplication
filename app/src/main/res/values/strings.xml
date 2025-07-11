@@ -3,6 +3,10 @@
     <string name="title_statical_reports">Stadistics Reports</string>
     <string name="title_list_of_crops_in_progress">List of Crops in Progress</string>
     <string name="title_crop_information">Crop Information</string>
+    <string-array name="roles_options">
+        <item>Agriculturist</item>
+        <item>Cooperative</item>
+    </string-array>
     <string-array name="crop_info_options">
         <item>General Information</item>
         <item>IOT devices</item>
