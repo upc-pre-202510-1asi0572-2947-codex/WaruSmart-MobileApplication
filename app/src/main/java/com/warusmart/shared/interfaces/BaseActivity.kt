@@ -16,6 +16,7 @@ import com.warusmart.iam.interfaces.activities.ProfileActivity
 import com.warusmart.sowings.interfaces.activities.SowingsManagementActivity
 import com.warusmart.stadistics.interfaces.activities.WaterStatisticsActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.warusmart.sowings.interfaces.activities.DeviceActivity
 import com.warusmart.stadistics.interfaces.activities.StadisticsActivity
 
 /**
@@ -88,7 +89,7 @@ open class BaseActivity : AppCompatActivity() {
      */
     private fun isSowingsManagementActivity(): Boolean {
         return this is SowingsManagementActivity || this is ControlsActivity || this is CropCareActivity || this is DiseasesActivity || this is ProductsActivity
-                || this is GeneralCropInfo
+                || this is GeneralCropInfo || this is DeviceActivity
     }
 
     // Checks if current activity is a forum related activity

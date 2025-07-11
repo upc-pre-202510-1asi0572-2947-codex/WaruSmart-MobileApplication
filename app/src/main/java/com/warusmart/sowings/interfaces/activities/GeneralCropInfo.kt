@@ -39,7 +39,8 @@ class GeneralCropInfo : BaseActivity() {
         super.onCreate(savedInstanceState)
         layoutInflater.inflate(R.layout.activity_general_crop_info, findViewById(R.id.container))
         enableEdgeToEdge()
-        // Configurar el BottomNavigationView
+
+        // Setup the BottomNavigationView
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_home
 

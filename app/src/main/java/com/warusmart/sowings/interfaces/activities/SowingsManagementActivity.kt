@@ -73,6 +73,14 @@ class SowingsManagementActivity : BaseActivity() {
     }
 
     /**
+     * HGets data from the backend and displays it when the activity resumes.
+     */
+    override fun onResume() {
+        super.onResume()
+        fetchAndDisplaySowings()
+    }
+
+    /**
     * Fetches sowings from the backend and displays them
     */
     private fun fetchAndDisplaySowings() {
