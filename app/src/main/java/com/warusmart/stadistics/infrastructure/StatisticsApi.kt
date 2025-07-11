@@ -3,6 +3,7 @@ package com.warusmart.stadistics.infrastructure;
 import com.warusmart.stadistics.domain.model.Control
 import com.warusmart.stadistics.domain.model.Crop;
 import com.warusmart.stadistics.domain.model.ProductivityReport
+import com.warusmart.stadistics.domain.model.Report
 import com.warusmart.stadistics.domain.model.Sowing
 
 import retrofit2.http.GET;
@@ -36,4 +37,10 @@ public interface StatisticsApi {
      */
     @GET("reports/productivity/{userId}")
     suspend fun getProductivityReports(@Path("userId") userId: Int) : List<ProductivityReport>
+
+    /**
+     * Gets reports for temperature, humidity and soil moisture
+     */
+    @GET("analytics/zone-averages")
+    suspend fun getReports() : List <Report>
 }

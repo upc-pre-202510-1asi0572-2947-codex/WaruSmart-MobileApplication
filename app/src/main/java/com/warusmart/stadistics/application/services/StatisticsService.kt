@@ -14,6 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.net.SocketException
 import io.github.cdimascio.dotenv.dotenv
 import com.github.mikephil.charting.data.PieEntry
+import com.warusmart.stadistics.domain.model.Report
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -165,6 +166,19 @@ class StatisticsService(context:Context) {
             api.getProductivityReports(userId);
         } catch (e: Exception) {
             Log.e("Stadistics Service", "Socking productivity reports: ${e.message}")
+            emptyList()
+        }
+    }
+
+    /**
+     * This method call at the reports api, in order to obtain reports
+     * for temperature, humidity and soil moisture
+     */
+    suspend fun getReports() : List<Report>{
+        return try {
+            api.getReports()
+        } catch (e: Exception) {
+            Log.e("Stadistics Service", "Error socking reports: ${e.message}")
             emptyList()
         }
     }
